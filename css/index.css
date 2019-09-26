@@ -40,4 +40,6 @@
 .info:hover {
     color: #50d754;
 }
-
+img {
+    width: 350px !important;
+}

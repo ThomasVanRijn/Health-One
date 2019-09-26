@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Health One</title>
     <meta charset="utf-8">
@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
     <div class="jumbotron text-center">
         <h1>Health One</h1>
@@ -26,32 +27,35 @@
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <img class="img-fluid" src="img/avatar.png" alt="profielfoto">
+                <?php
+                $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
+                $query = $db->prepare("SELECT * FROM patient WHERE id = " . $_GET['id']);
+
+                $query->execute();
+                $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($result as &$data) {
+                echo $data['patientimg'];
+                }
+                ?>
             </div>
             <div class="col-8">
                 <table class="table">
                     <?php
                     try {
-                        $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
-                        $query = $db->prepare("SELECT * FROM patient WHERE id = " . $_GET['id']);
 
-                        $query->execute();
-                        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                        foreach ($result as &$data) {
+
+
+
 
                             echo "<tr>" . "<td>" . "Naam:" . "</td>" . "<td>" . $data['naam'] . "</td>" . "</tr>";
                             echo "<tr>" . "<td>" . "Leeftijd:" . "</td>" . "<td>" . $data['leeftijd'] . "</td>" . "</tr>";
                             echo "<tr>" . "<td>" . "Adres:" . "</td>" . "<td>" . $data['adres'] . "</td>" . "</tr>";
                             echo "<tr>" . "<td>" . "Email:" . "</td>" . "<td>" . $data['email'] . "</td>" . "</tr>";
                             echo "<tr>" . "<td>" . "Telefoonnummer:" . "</td>" . "<td>" . $data['telefoonnummer'] . "</td>" . "</tr>";
-
-                        }
+                        
+                    } catch (PDOException $e) {
+                        die("Error!: " . $e->getMessage());
                     }
-                    catch(PDOException $e)
-                        {
-                            die("Error!: " . $e->getMessage());
-
-                        }
                     ?>
                     <?php
 
@@ -66,14 +70,18 @@
                         <tr>
                             <th>ID</th>
                             <th>Naam</th>
-                            <th>Bijwerking</th>
+                            <th>Aandoening</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Lorum Ipsum</td>
-                            <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Reserved jasmine convenience needs.</td>
+                            <td>Lorem Ipsum</td>
+                            <td>
+                                <?php
+                                echo $data['aandoening'];
+                                ?>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -82,4 +90,5 @@
     </div>
 
 </body>
+
 </html>
