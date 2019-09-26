@@ -12,10 +12,12 @@
 </head>
 <body>
 <?php
-    include("database.php");
-    $query = $db->prepare("SELECT * FROM patienten");
-    $query->execute();
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+include ("database.php");
+$db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
+$query = $db->prepare("SELECT * FROM patient");
+$query->execute();
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
     <div class="jumbotron text-center">
         <h1>Health One</h1>
@@ -42,7 +44,7 @@
                     <thead>
                     <tr>
                         <th>Naam</th>
-                        <th>Pas nummer</th>
+                        <th>Leeftijd</th>
                         <th>Email</th>
                     </tr>
                     </thead>
@@ -50,7 +52,7 @@
                         <?php
                         foreach($result as &$data) {
                         echo "<tr>";
-                            echo "<td>" . $data["naam"] . "</td>";
+                            echo "<td>"  . "<a href='patient-gegevens.php?id=" . $data['id'] . "'>" . $data["naam"]  . "</td>";
                             echo "<td>" . $data["leeftijd"] . "</td>";
                             echo "<td>" . $data["email"] . "</td>";
                             echo "</tr>";

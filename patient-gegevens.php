@@ -30,26 +30,32 @@
             </div>
             <div class="col-8">
                 <table class="table">
-                    <tr>
-                        <td>Naam</td>
-                        <td>Thomas van Rijn</td>
-                    </tr>
-                    <tr>
-                        <td>geboortedatum</td>
-                        <td>2 oktober 2002</td>
-                    </tr>
-                    <tr>
-                        <td>email</td>
-                        <td>302190448@student.rocmondriaan.nl</td>
-                    </tr>
-                    <tr>
-                        <td>telefoon nummer</td>
-                        <td>06-36356592</td>
-                    </tr>
-                    <tr>
-                        <td>pas nummer</td>
-                        <td>TR-02-10-02</td>
-                    </tr>
+                    <?php
+                    try {
+                        $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
+                        $query = $db->prepare("SELECT * FROM patient WHERE id = " . $_GET['id']);
+
+                        $query->execute();
+                        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($result as &$data) {
+
+                            echo "<tr>" . "<td>" . "Naam:" . "</td>" . "<td>" . $data['naam'] . "</td>" . "</tr>";
+                            echo "<tr>" . "<td>" . "Leeftijd:" . "</td>" . "<td>" . $data['leeftijd'] . "</td>" . "</tr>";
+                            echo "<tr>" . "<td>" . "Adres:" . "</td>" . "<td>" . $data['adres'] . "</td>" . "</tr>";
+                            echo "<tr>" . "<td>" . "Email:" . "</td>" . "<td>" . $data['email'] . "</td>" . "</tr>";
+                            echo "<tr>" . "<td>" . "Telefoonnummer:" . "</td>" . "<td>" . $data['telefoonnummer'] . "</td>" . "</tr>";
+
+                        }
+                    }
+                    catch(PDOException $e)
+                        {
+                            die("Error!: " . $e->getMessage());
+
+                        }
+                    ?>
+                    <?php
+
+                    ?>
                 </table>
             </div>
         </div>
@@ -74,5 +80,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>
