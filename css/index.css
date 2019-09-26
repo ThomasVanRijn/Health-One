@@ -1,0 +1,43 @@
+#home {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../img/HealthOne-logo-2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron {
+    opacity: 0.9;
+}
+
+.btn {
+    font-family: "Arial";
+    color: white;
+    font-size: 20pt;
+    padding: 50px;
+    margin: 10px;
+    background: radial-gradient( #58eb5c, #50d754);
+    box-shadow: black 0px 0px 20px -10px;
+}
+
+.btn:hover {
+    color: white;
+    background-image: radial-gradient( #58eb5c, #4bb939)!important;
+}
+.table {
+    margin: auto;
+}
+
+.info {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 20px;
+    color: #58eb5c;
+}
+
+.info:hover {
+    color: #50d754;
+}
+
