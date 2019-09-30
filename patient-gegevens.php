@@ -34,7 +34,7 @@
                 $query->execute();
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($result as &$data) {
-                echo "<img src='img/avatar.png'>";
+                    echo "<img src='img/avatar.png'>";
                 }
                 ?>
             </div>
@@ -47,19 +47,16 @@
 
 
 
-                            echo "<tr>" . "<td>" . "Naam:" . "</td>" . "<td>" . $data['naam'] . "</td>" . "</tr>";
-                            echo "<tr>" . "<td>" . "Leeftijd:" . "</td>" . "<td>" . $data['leeftijd'] . "</td>" . "</tr>";
-                            echo "<tr>" . "<td>" . "Adres:" . "</td>" . "<td>" . $data['adres'] . "</td>" . "</tr>";
-                            echo "<tr>" . "<td>" . "Email:" . "</td>" . "<td>" . $data['email'] . "</td>" . "</tr>";
-                            echo "<tr>" . "<td>" . "Telefoonnummer:" . "</td>" . "<td>" . $data['telefoonnummer'] . "</td>" . "</tr>";
-                        
+                        echo "<tr>" . "<td>" . "Naam:" . "</td>" . "<td>" . $data['naam'] . "</td>" . "</tr>";
+                        echo "<tr>" . "<td>" . "Leeftijd:" . "</td>" . "<td>" . $data['leeftijd'] . "</td>" . "</tr>";
+                        echo "<tr>" . "<td>" . "Adres:" . "</td>" . "<td>" . $data['adres'] . "</td>" . "</tr>";
+                        echo "<tr>" . "<td>" . "Email:" . "</td>" . "<td>" . $data['email'] . "</td>" . "</tr>";
+                        echo "<tr>" . "<td>" . "Telefoonnummer:" . "</td>" . "<td>" . $data['telefoonnummer'] . "</td>" . "</tr>";
                     } catch (PDOException $e) {
                         die("Error!: " . $e->getMessage());
                     }
                     ?>
-                    <?php
 
-                    ?>
                 </table>
             </div>
         </div>
@@ -82,6 +79,9 @@
                                 echo $data['aandoeningen'];
                                 ?>
                             </td>
+                        </tr>
+                        <tr>
+                            <td><button><a href="medicijn-toevoegen.php">Medicijn toevoegen</a></button></td>
                         </tr>
                     </tbody>
                 </table>
