@@ -23,7 +23,7 @@
     <div class="container fluid">
         <div class="row text-center">
             <div class="col-lg-4" >
-                <a style="text-decoration: none" href="arts-zoekpagina.php"><button class="btn btn-block">ARTS</button></a>
+                <a style="text-decoration: none" href="patient-zoekpagina.php"><button class="btn btn-block">ARTS</button></a>
             </div>
             <div class="col-lg-4" >
                 <a style="text-decoration: none" href="apotheek.php"><button class="btn btn-block">APOTHEEK</button></a>
