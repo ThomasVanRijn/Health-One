@@ -13,7 +13,7 @@
 <body>
 <div class="jumbotron text-center">
     <h1>Health One</h1>
-    <p>Patiënt toevoegen</p>
+    <p>Medicijn toevoegen</p>
 
     <div class="container">
         <div class="progress">
@@ -28,19 +28,19 @@
 <form action="medicijn_add_database.php" method="post">
     <p>
         <label for="id">Id</label>
-        <input type="text" name="id" class="form-control" id="id" placeholder="ID van de Patient" required>
+        <input type="text" name="id" class="form-control" id="id" placeholder="ID van de medicijn" required>
     </p>
     <p>
         <label for="naam">Naam</label>
-        <input type="text" class="form-control" name="naam" id="naam" placeholder="Naam van de Patient">
+        <input type="text" class="form-control" name="naam" id="naam" placeholder="Naam van de medicijn">
     </p>
     <p>
         <label for="id">Herhaal</label>
-        <input type="text" name="herhaal" class="form-control" id="herhaal" placeholder="Leeftijd van de Patient">
+        <input type="text" name="herhaal" class="form-control" id="herhaal" placeholder="Is het een herhaal recept?">
     </p>
     <p>
         <label for="adres">Vergoed</label>
-        <input type="text" class="form-control" name="vergoed" id="vergoed" placeholder="Adres van de Patient">
+        <input type="text" class="form-control" name="vergoed" id="vergoed" placeholder="Wordt dit medicijn vergoed?">
     </p>
     <input type="submit" value="Submit">
 </form>

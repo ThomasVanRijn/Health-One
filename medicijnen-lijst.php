@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Health One</title>
     <meta charset="utf-8">
@@ -9,15 +10,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-<?php
-include ("database.php");
-$db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
-$query = $db->prepare("SELECT * FROM medicijnen");
-$query->execute();
-$result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-?>
+<body>
+    <?php
+    include("database.php");
+    $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
+    $query = $db->prepare("SELECT * FROM medicijnen");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    ?>
     <div class="jumbotron text-center">
         <h1>Health One</h1>
         <p>Zoek uw medicijn</p>
@@ -41,16 +43,16 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="col">
                 <table class="table table-hover">
                     <thead>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Vergoed</th>
-                    </tr>
+                        <tr>
+                            <th>Naam</th>
+                            <th>Vergoed</th>
+                        </tr>
                     </thead>
                     <tbody id="myTable">
                         <?php
-                        foreach($result as &$data) {
-                        echo "<tr>";
-                            echo "<td>"  . "<a href='patient-gegevens.php?id=" . $data['id'] . "'>" . $data["naam"]  . "</td>";
+                        foreach ($result as &$data) {
+                            echo "<tr>";
+                            echo "<td>" . $data["naam"] . "</td>";
                             echo "<td>" . $data["vergoed"] . "</td>";
                             echo "</tr>";
                         }
@@ -63,7 +65,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             $("#myInput").on("keyup", function() {
                 var value = $(this).val().toLowerCase().trim();
                 $("#myTable tr").filter(function() {
@@ -73,4 +75,5 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
         });
     </script>
 </body>
+
 </html>

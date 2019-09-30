@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 30 sep 2019 om 12:10
+-- Gegenereerd op: 30 sep 2019 om 17:02
 -- Serverversie: 10.4.6-MariaDB
--- PHP-versie: 7.1.32
+-- PHP-versie: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,6 +52,26 @@ INSERT INTO `artsen` (`id`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `medicijnen`
+--
+
+CREATE TABLE `medicijnen` (
+  `id` int(255) NOT NULL,
+  `naam` varchar(255) NOT NULL,
+  `herhaal` varchar(255) NOT NULL,
+  `vergoed` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `medicijnen`
+--
+
+INSERT INTO `medicijnen` (`id`, `naam`, `herhaal`, `vergoed`) VALUES
+(1, 'test', 'nee', 'ja');
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `patient`
 --
 
@@ -73,7 +93,9 @@ CREATE TABLE `patient` (
 INSERT INTO `patient` (`id`, `naam`, `leeftijd`, `adres`, `email`, `telefoonnummer`, `verzekeringsnummer`, `aandoeningen`) VALUES
 (1, 'Dinna de Waard', 17, 'Vogelkersstraat 37', 'daandata1@gmail.com', 648681485, 129856, 'Cholera'),
 (2, 'Daytonius Boone', 17, 'De brink 1660', 'daytonboone@gmail.com', 67893272, 129852, ''),
-(3, 'Dylanus van der Hout', 17, 'Boomaweg 6a', 'Dylanvanderhout@gmail.com', 657119062, 132434344, '');
+(3, 'Dylanus van der Hout', 17, 'Boomaweg 6a', 'Dylanvanderhout@gmail.com', 657119062, 132434344, ''),
+(4, 'Collin van de Laar', 17, 'heulstraat 3', 'collinvandelaar@gmail.com', 657119061, 856, 'Geen'),
+(345, 'gd', 324, 'fes', 'esfs', 43, 342, 'grs');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -83,6 +105,12 @@ INSERT INTO `patient` (`id`, `naam`, `leeftijd`, `adres`, `email`, `telefoonnumm
 -- Indexen voor tabel `artsen`
 --
 ALTER TABLE `artsen`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `medicijnen`
+--
+ALTER TABLE `medicijnen`
   ADD PRIMARY KEY (`id`);
 
 --
