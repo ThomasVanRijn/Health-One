@@ -11,6 +11,9 @@
     opacity: 0.9;
 }
 
+a {color: green;}
+a:hover{color: green;}
+
 .btn {
     font-family: "Arial";
     color: white;

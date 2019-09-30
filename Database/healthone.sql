@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 30 sep 2019 om 09:54
+-- Gegenereerd op: 30 sep 2019 om 12:10
 -- Serverversie: 10.4.6-MariaDB
--- PHP-versie: 7.3.9
+-- PHP-versie: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -23,6 +23,31 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `healthone` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `healthone`;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `artsen`
+--
+
+CREATE TABLE `artsen` (
+  `id` int(11) NOT NULL,
+  `naam` varchar(255) NOT NULL,
+  `adres` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `telefoonnummer` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `artsen`
+--
+
+INSERT INTO `artsen` (`id`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
+(1, 'Ramiz van der Meijden', 'Somerenseweg 190', 'b5uefxp7kyl@groupbuff.com', '06-9046995'),
+(2, 'Abygail de Mos', 'Linthorst Homanlaan 86', '0uibufvyrogb@groupbuff.com', ' 06-6580620'),
+(3, 'Antoine Jansema', 'Schulpweg 15', 'h8s9yq4cqvo@powerencry.com', '06-8766940'),
+(4, 'Jian van de Loo', 'Zijtak Oostzijde 12', 'voklx5xpgq@powerencry.com', '06-86579064'),
+(5, 'Gulsum Coolen', 'Nieuwstraat 198', 'j21ug9v175@meantinc.com', '06-51531500');
 
 -- --------------------------------------------------------
 
@@ -55,10 +80,26 @@ INSERT INTO `patient` (`id`, `naam`, `leeftijd`, `adres`, `email`, `telefoonnumm
 --
 
 --
+-- Indexen voor tabel `artsen`
+--
+ALTER TABLE `artsen`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexen voor tabel `patient`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT voor geëxporteerde tabellen
+--
+
+--
+-- AUTO_INCREMENT voor een tabel `artsen`
+--
+ALTER TABLE `artsen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

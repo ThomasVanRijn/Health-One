@@ -11,7 +11,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body id="arts">
-
+<?php
+include ("database.php");
+$query = $db->prepare("SELECT * FROM artsen");
+$query->execute();
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
 <div class="jumbotron text-center">
     <h1>Health One</h1>
     <p>Selecteer uw account</p>
@@ -37,20 +42,20 @@
                 <thead>
                 <tr>
                     <th>Naam</th>
-                    <th>gebruikernaam</th>
+                    <th>Adres</th>
+                    <th>Email</th>
                 </tr>
                 </thead>
                 <tbody id="myTable">
-                <tr class="clickable"
-                    onclick="window.location='patient-zoekpagina.php'"">
-                    <td>Mathijs</td>
-                    <td>302974175</td>
-                </tr>
-                <tr class="clickable"
-                    onclick="window.location='patient-zoekpagina.php'"">
-                    <td>Brahim</td>
-                    <td>302837783</td>
-                </tr>
+                <?php
+                foreach($result as &$data) {
+                    echo "<tr>";
+                    echo "<td>"  . "<a href='patient-zoekpagina.php'>" . $data["naam"]  . "</td>";
+                    echo "<td>" . $data["adres"] . "</td>";
+                    echo "<td>" . $data["email"] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
                 </tbody>
             </table>
         </div>
