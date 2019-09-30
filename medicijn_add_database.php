@@ -12,22 +12,18 @@ try{
 // Attempt insert query execution
 try{
     // Create prepared statement
-    $sql = "INSERT INTO patient (id, naam, leeftijd ,adres ,email, telefoonnummer, verzekeringsnummer, aandoeningen) VALUES (:id, :naam, :leeftijd ,:adres, :email, :telefoonnummer, :verzekeringsnummer, :aandoeningen);";
+    $sql = "INSERT INTO medicijnen (id, naam, herhaal ,vergoed) VALUES (:id, :naam, :herhaal ,:vergoed);";
     $stmt = $pdo->prepare($sql);
 
     // Bind parameters to statement
     $stmt->bindParam(':id', $_REQUEST['id']);
     $stmt->bindParam(':naam', $_REQUEST['naam']);
-    $stmt->bindParam(':leeftijd', $_REQUEST['leeftijd']);
-    $stmt->bindParam(':adres', $_REQUEST['adres']);
-    $stmt->bindParam(':email', $_REQUEST['email']);
-    $stmt->bindParam(':telefoonnummer', $_REQUEST['telefoonnummer']);
-    $stmt->bindParam(':verzekeringsnummer', $_REQUEST['verzekeringsnummer']);
-    $stmt->bindParam(':aandoeningen', $_REQUEST['aandoeningen']);
+    $stmt->bindParam(':herhaal', $_REQUEST['herhaal']);
+    $stmt->bindParam(':vergoed', $_REQUEST['vergoed']);
 
     // Execute the prepared statement
     $stmt->execute();
-    echo "<META HTTP-EQUIV ='Refresh' Content ='0; URL =patient-lijst.php'>";
+    echo "<META HTTP-EQUIV ='Refresh' Content ='0; URL =medicijnen-lijst.php'>";
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }

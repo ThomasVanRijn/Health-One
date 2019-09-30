@@ -13,14 +13,14 @@
 <?php
 include ("database.php");
 $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
-$query = $db->prepare("SELECT * FROM patient");
+$query = $db->prepare("SELECT * FROM medicijnen");
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
     <div class="jumbotron text-center">
         <h1>Health One</h1>
-        <p>Zoek uw patient</p>
+        <p>Zoek uw medicijn</p>
 
         <div class="container">
             <div class="progress">
@@ -43,8 +43,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                     <thead>
                     <tr>
                         <th>Naam</th>
-                        <th>Leeftijd</th>
-                        <th>Email</th>
+                        <th>Vergoed</th>
                     </tr>
                     </thead>
                     <tbody id="myTable">
@@ -52,13 +51,13 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                         foreach($result as &$data) {
                         echo "<tr>";
                             echo "<td>"  . "<a href='patient-gegevens.php?id=" . $data['id'] . "'>" . $data["naam"]  . "</td>";
-                            echo "<td>" . $data["leeftijd"] . "</td>";
-                            echo "<td>" . $data["email"] . "</td>";
+                            echo "<td>" . $data["vergoed"] . "</td>";
                             echo "</tr>";
                         }
                         ?>
                     </tbody>
                 </table>
+                <button type="button" class="btn btn-primary"><a href="medicijn_add.html">Medicijn toevogen</a></button>
             </div>
         </div>
     </div>

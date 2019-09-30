@@ -34,7 +34,7 @@
                 $query->execute();
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($result as &$data) {
-                echo $data['patientimg'];
+                echo "<img src='img/avatar.png'>";
                 }
                 ?>
             </div>
@@ -79,7 +79,7 @@
                             <td>Lorem Ipsum</td>
                             <td>
                                 <?php
-                                echo $data['aandoening'];
+                                echo $data['aandoeningen'];
                                 ?>
                             </td>
                         </tr>

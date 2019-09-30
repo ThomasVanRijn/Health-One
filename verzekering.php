@@ -21,10 +21,10 @@
             <a style="text-decoration: none" href="arts-beheren-pagina.php"><button class="btn btn-block">ARTS <br> BEHEREN</button></a>
         </div>
         <div class="col-lg-4" >
-            <a style="text-decoration: none" href="#"><button class="btn btn-block">MEDICIJNEN BEHEREN</button></a>
+            <a style="text-decoration: none" href="medicijnen-lijst.php"><button class="btn btn-block">MEDICIJNEN BEHEREN</button></a>
         </div>
         <div class="col-lg-4">
-            <a style="text-decoration: none" href="#"><button class="btn btn-block">PATIENTEN BEHEREN</button></a>
+            <a style="text-decoration: none" href="patient-lijst.php"><button class="btn btn-block">PATIENTEN BEHEREN</button></a>
         </div>
     </div>
 </div>
