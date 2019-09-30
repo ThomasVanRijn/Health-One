@@ -13,7 +13,20 @@
 <body>
 <div class="jumbotron text-center">
     <h1>Health One</h1>
-    <p>Kies je afdeling</p>
+    <p>Kies</p>
+</div>
+<div class="container fluid">
+    <div class="row text-center">
+        <div class="col-lg-4" >
+            <a style="text-decoration: none" href="arts-beheren-pagina.php"><button class="btn btn-block">ARTS <br> BEHEREN</button></a>
+        </div>
+        <div class="col-lg-4" >
+            <a style="text-decoration: none" href="#"><button class="btn btn-block">MEDICIJNEN BEHEREN</button></a>
+        </div>
+        <div class="col-lg-4">
+            <a style="text-decoration: none" href="#"><button class="btn btn-block">PATIENTEN BEHEREN</button></a>
+        </div>
+    </div>
 </div>
 </body>
 </html>
