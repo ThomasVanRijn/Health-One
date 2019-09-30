@@ -18,7 +18,6 @@ $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="container">
     <table class="table table-hover">
         <thead>
         <tr>
@@ -34,11 +33,11 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
             echo "<td>"  . "<a href='patient-zoekpagina.php'>" . $data["naam"]  . "</td>";
             echo "<td>" . $data["adres"] . "</td>";
             echo "<td>" . $data["email"] . "</td>";
+            echo "<td>" . $data["telefoonnummer"] . "</td>";
             echo "</tr>";
         }
         ?>
         </tbody>
     </table>
-</div>
 </body>
 </html>
