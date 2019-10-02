@@ -30,10 +30,13 @@
         <label for="naam">Naam</label>
         <input type="text" class="form-control" name="naam" id="naam" placeholder="Naam van de medicijn">
     </p>
-    <p>
-        <label for="herhaal">Herhaal</label>
-        <input type="text" name="herhaal" class="form-control" id="herhaal" placeholder="Is het een herhaal recept?">
-    </p>
+    <div class="form-check">
+        <input class="form-check-input" name="herhaal" type="checkbox" value="1" id="herhaal">
+        <label class="form-check-label" for="herhaal">
+            Default checkbox
+        </label>
+    </div>
+
     <p>
         <label for="vergoed">Vergoed</label>
         <input type="text" class="form-control" name="vergoed" id="vergoed" placeholder="Wordt dit medicijn vergoed?">

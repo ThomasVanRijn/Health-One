@@ -11,6 +11,11 @@ try{
 
 // Attempt insert query execution
 try{
+    //var_dump($_POST);die();
+    if(!isset($_POST['herhaal']))
+    {
+        $_REQUEST['herhaal']=0;
+    }
     // Create prepared statement
     $sql = "INSERT INTO medicijnen (id, naam, herhaal ,vergoed) VALUES (:id, :naam, :herhaal ,:vergoed);";
     $stmt = $pdo->prepare($sql);

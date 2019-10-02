@@ -42,11 +42,6 @@
                 <table class="table">
                     <?php
                     try {
-
-
-
-
-
                         echo "<tr>" . "<td>" . "Naam:" . "</td>" . "<td>" . $data['naam'] . "</td>" . "</tr>";
                         echo "<tr>" . "<td>" . "Leeftijd:" . "</td>" . "<td>" . $data['leeftijd'] . "</td>" . "</tr>";
                         echo "<tr>" . "<td>" . "Adres:" . "</td>" . "<td>" . $data['adres'] . "</td>" . "</tr>";

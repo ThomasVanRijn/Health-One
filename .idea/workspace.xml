@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b78d6132-63ad-44c7-98cc-e4fb84393a86" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/patient-gegevens-verzekeraar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/patient-gegevens-wijzigen.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/removepatient.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wijzigpatient.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/patient.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/patient.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medicijn-toevoegen.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn-toevoegen.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medicijn_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medicijn_add_database.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn_add_database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-gegevens.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-gegevens.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient-lijst.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-lijst.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,12 +44,12 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\HealthOne" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\HealthOne" />
       <recent name="C:\xampp\htdocs\HealthOne\css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\HealthOne" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -76,6 +85,7 @@
       <workItem from="1569832056404" duration="2821000" />
       <workItem from="1569840101692" duration="15000" />
       <workItem from="1569840117879" duration="381000" />
+      <workItem from="1570017783404" duration="2528000" />
     </task>
     <servers />
   </component>
