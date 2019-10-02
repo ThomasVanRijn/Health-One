@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 30 sep 2019 om 17:02
+-- Gegenereerd op: 02 okt 2019 om 12:33
 -- Serverversie: 10.4.6-MariaDB
--- PHP-versie: 7.3.9
+-- PHP-versie: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,8 +58,8 @@ INSERT INTO `artsen` (`id`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
 CREATE TABLE `medicijnen` (
   `id` int(255) NOT NULL,
   `naam` varchar(255) NOT NULL,
-  `herhaal` varchar(255) NOT NULL,
-  `vergoed` varchar(255) NOT NULL
+  `herhaal` tinyint(1) NOT NULL,
+  `vergoed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -67,7 +67,10 @@ CREATE TABLE `medicijnen` (
 --
 
 INSERT INTO `medicijnen` (`id`, `naam`, `herhaal`, `vergoed`) VALUES
-(1, 'test', 'nee', 'ja');
+(1, 'test', 1, 1),
+(2, 'aids pil', 1, 0),
+(3, 'naam', 1, 1),
+(4, 'papier', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -95,7 +98,7 @@ INSERT INTO `patient` (`id`, `naam`, `leeftijd`, `adres`, `email`, `telefoonnumm
 (2, 'Daytonius Boone', 17, 'De brink 1660', 'daytonboone@gmail.com', 67893272, 129852, ''),
 (3, 'Dylanus van der Hout', 17, 'Boomaweg 6a', 'Dylanvanderhout@gmail.com', 657119062, 132434344, ''),
 (4, 'Collin van de Laar', 17, 'heulstraat 3', 'collinvandelaar@gmail.com', 657119061, 856, 'Geen'),
-(345, 'gd', 324, 'fes', 'esfs', 43, 342, 'grs');
+(347, 'tom', 54, 'hoistraat', 'asd@asd.com', 635620159, 654852, 'aids');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -128,6 +131,18 @@ ALTER TABLE `patient`
 --
 ALTER TABLE `artsen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT voor een tabel `medicijnen`
+--
+ALTER TABLE `medicijnen`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT voor een tabel `patient`
+--
+ALTER TABLE `patient`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=348;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
