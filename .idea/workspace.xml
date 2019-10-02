@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b78d6132-63ad-44c7-98cc-e4fb84393a86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-zoekpagina.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-zoekpagina.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medicijn_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient_add.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
