@@ -106,9 +106,9 @@
                         </tr>
                     </tbody>
                 </table>
-                <table>
-                    <a href="patient-gegevens-wijzigen.php?id=<?php echo $data['id'] ?>"> <button type="button" class="btn btn-primary">Patiënt gegevens wijzigen</button></a><br><br>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                <table >
+                    <a href="patient-gegevens-wijzigen.php?id=<?php echo $data['id'] ?>"> <button type="button" class="btn btn-primary btn-block">Patiënt gegevens wijzigen</button></a><br><br>
+                    <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">
                         Patiënt verwijderen
                     </button>
                 </table>

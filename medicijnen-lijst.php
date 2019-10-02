@@ -46,6 +46,8 @@
                         <tr>
                             <th>Naam</th>
                             <th>Vergoed</th>
+                            <th>Wijzig</th>
+                            <th>Verwijderen</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -54,6 +56,8 @@
                             echo "<tr>";
                             echo "<td>" . $data["naam"] . "</td>";
                             echo "<td>" . $data["vergoed"] . "</td>";
+                            echo "<td>" . "<a href='medicijn-gegevens-wijzigen.php?id=" . $data['id'] . "'>" . "<button type='button' class='btn btn-primary '>" . "Patiënt gegevens wijzigen" . "</button>" . "</a>";
+                            echo "<td>" . "<button type='button' class='btn btn-danger btn-block' data-toggle='modal' data-target='#exampleModal'>" . "Verwijderen" . "</button>";
                             echo "</tr>";
                         }
                         ?>
@@ -63,7 +67,27 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pas op!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Weet u zeker dat u <?php echo $data['naam']; ?> uit de medicijnen lijst wilt verwijderen?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
+                    <form method="post" action="medicijn_verwijder.php?id=<?php echo $data['id']; ?>">
+                        <button type="submit" name="id" value="<?php echo $_GET['id'] ?>" class="btn btn-danger">Medicijn verwijderen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         $(document).ready(function() {
             $("#myInput").on("keyup", function() {
