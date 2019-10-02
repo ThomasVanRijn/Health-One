@@ -59,7 +59,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                         ?>
                     </tbody>
                 </table>
-                <button type="button" class="btn btn-primary"><a href="patient_add.html">Patient toevogen</a></button>
+               <a href="patient_add.html"> <button type="button" class="btn btn-primary">Patiënt toevoegen</button></a>
             </div>
         </div>
     </div>

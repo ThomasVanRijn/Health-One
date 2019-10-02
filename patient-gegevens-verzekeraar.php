@@ -63,7 +63,6 @@
                             <th>ID</th>
                             <th>Naam</th>
                             <th>Aandoening</th>
-                            <th>Verwijderen</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,9 +75,7 @@
                                 ?>
                             </td>
                             <td>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                                    Patiënt verwijderen
-                                </button>
+
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,13 +88,13 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                Weet u zeker dat u de patiënt <?php echo $data['naam'];?> wilt verwijderen?
+                                                Weet u zeker dat u de patiënt <?php echo $data['naam']; ?> wilt verwijderen?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
                                                 <form method="post" action="removepatient.php">
-                                    <button type="submit" name="id" value="<?php echo $_GET["id"] ?>" class="btn btn-danger">Patiënt verwijderen</button>
-                                </form>
+                                                    <button type="submit" name="id" value="<?php echo $_GET["id"] ?>" class="btn btn-danger">Patiënt verwijderen</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -106,13 +103,14 @@
                         </tr>
                         <tr>
                             <td><button><a href="medicijn-toevoegen.php">Medicijn toevoegen</a></button></td>
-                            <td><a href="patient-gegevens-wijzigen.php"> <button>Patiënt gegevens wijzigen</button></a>
-                            </td>
-                            <td>
-                            </td>
-
                         </tr>
                     </tbody>
+                </table>
+                <table>
+                    <a href="patient-gegevens-wijzigen.php?id=<?php echo $data['id'] ?>"> <button type="button" class="btn btn-primary">Patiënt gegevens wijzigen</button></a><br><br>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                        Patiënt verwijderen
+                    </button>
                 </table>
             </div>
         </div>
