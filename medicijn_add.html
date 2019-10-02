@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Health One</title>
     <meta charset="utf-8">
@@ -10,41 +11,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-<div class="jumbotron text-center">
-    <h1>Health One</h1>
-    <p>Medicijn toevoegen</p>
 
-    <div class="container">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:75%"></div>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Health One</h1>
+        <p>Medicijn toevoegen</p>
+
+        <div class="container">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:75%"></div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-<div class="row ">
-    <div class="col">
-<form action="medicijn_add_database.php" method="post">
-    <p>
-        <label for="naam">Naam</label>
-        <input type="text" class="form-control" name="naam" id="naam" placeholder="Naam van de medicijn">
-    </p>
-    <div class="form-check">
-        <input class="form-check-input" name="herhaal" type="checkbox" value="1" id="herhaal">
-        <label class="form-check-label" for="herhaal">
-            Default checkbox
-        </label>
-    </div>
+    <div class="container">
+        <div class="row ">
+            <div class="col">
+                <form action="medicijn_add_database.php" method="post">
+                    <p>
+                        <label for="naam">Naam</label>
+                        <input type="text" class="form-control" name="naam" id="naam"
+                            placeholder="Naam van de medicijn">
+                    </p>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" name="herhaal" value="1" class="custom-control-input" id="customSwitch1">
+                        <label class="custom-control-label" for="customSwitch1">Is dit een herhaal recept?</label>
+                    </div>
+                    
 
-    <p>
-        <label for="vergoed">Vergoed</label>
-        <input type="text" class="form-control" name="vergoed" id="vergoed" placeholder="Wordt dit medicijn vergoed?">
-    </p>
-    <input type="submit" value="Submit">
-</form>
+                    <p>
+                        <label for="vergoed">Vergoed</label>
+                        <input type="text" class="form-control" name="vergoed" id="vergoed"
+                            placeholder="Wordt dit medicijn vergoed?">
+                    </p>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 </body>
+
 </html>

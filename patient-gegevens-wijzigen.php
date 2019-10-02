@@ -52,7 +52,7 @@
                 </p>
                 <p>
                     <label for="email">Telefoonnummer</label>
-                    <input type="text" class="form-control" name="telefoonnummer" id="telefoonnummer" value='<?php echo $data['telefoonnummer'] ?>'>
+                    <input type="text" class="form-control" name="telefoonnummer" id="telefoonnummer" value='0<?php echo $data['telefoonnummer'] ?>'>
                 </p>
                 <p>
                     <label for="email">Verzekeringsnummer</label>
