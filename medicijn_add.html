@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -31,20 +30,17 @@
                     <p>
                         <label for="naam">Naam</label>
                         <input type="text" class="form-control" name="naam" id="naam"
-                            placeholder="Naam van de medicijn">
+                            placeholder="Naam van het medicijn">
                     </p>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" name="herhaal" value="1" class="custom-control-input" id="customSwitch1">
+                        <input type="checkbox" name="herhaal" value="Ja" class="custom-control-input" id="customSwitch1">
                         <label class="custom-control-label" for="customSwitch1">Is dit een herhaal recept?</label>
                     </div>
-                    
-
-                    <p>
-                        <label for="vergoed">Vergoed</label>
-                        <input type="text" class="form-control" name="vergoed" id="vergoed"
-                            placeholder="Wordt dit medicijn vergoed?">
-                    </p>
-                    <input type="submit" value="Submit">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" name="vergoed" value="Ja" class="custom-control-input" id="customSwitch2">
+                        <label class="custom-control-label" for="customSwitch2">Wordt dit medicijn vergoed?</label><br>
+                    </div><br>
+                    <input type="submit" value="Submit" class="btn btn-primary">
                 </form>
             </div>
         </div>

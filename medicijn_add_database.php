@@ -14,8 +14,19 @@ try{
     //var_dump($_POST);die();
     if(!isset($_POST['herhaal']))
     {
-        $_REQUEST['herhaal']=0;
+        $_REQUEST['herhaal']="Nee";
     }
+    else{
+        $_REQUEST['herhaal']="Ja";
+    }
+        //var_dump($_POST);die();
+        if(!isset($_POST['vergoed']))
+        {
+            $_REQUEST['vergoed']="Nee";
+        }
+        else{
+            $_REQUEST['vergoed']="Ja";
+        }
     // Create prepared statement
     $sql = "INSERT INTO medicijnen (id, naam, herhaal ,vergoed) VALUES (:id, :naam, :herhaal ,:vergoed);";
     $stmt = $pdo->prepare($sql);
