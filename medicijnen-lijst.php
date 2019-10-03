@@ -63,7 +63,7 @@
                         ?>
                     </tbody>
                 </table>
-                <a href="medicijn_add.html"><button type="button" class="btn btn-primary">Medicijn toevogen</button></a>
+                <a href="medicijn_add.html"><button type="button" class="btn btn-primary">Medicijn toevoegen</button></a>
             </div>
         </div>
     </div>
