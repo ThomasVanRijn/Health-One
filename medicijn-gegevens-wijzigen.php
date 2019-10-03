@@ -40,7 +40,7 @@
                 </p>
                 <p>
                     <label for="Herhaal">Herhaal</label>
-                    <input type="text" name="Herhaal" class="form-control" id="Herhaal" value='<?php echo $data['herhaal'] ?>'>
+                    <input type="text" name="herhaal" class="form-control" id="herhaal" value='<?php echo $data['herhaal'] ?>'>
                 </p>
                 <p>
                     <label for="vergoed">Adres</label>

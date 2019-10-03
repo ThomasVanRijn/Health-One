@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b78d6132-63ad-44c7-98cc-e4fb84393a86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Arts-gegevens-wijzigen.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/arts_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/arts_add_database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/arts_database_wijzig.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/arts_verwijder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arts-beheren-pagina.php" beforeDir="false" afterPath="$PROJECT_DIR$/arts-beheren-pagina.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medicijnen-lijst.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijnen-lijst.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medicijn-gegevens-wijzigen.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn-gegevens-wijzigen.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +76,7 @@
       <workItem from="1569840101692" duration="15000" />
       <workItem from="1569840117879" duration="381000" />
       <workItem from="1570017783404" duration="2528000" />
-      <workItem from="1570094107090" duration="2214000" />
+      <workItem from="1570094107090" duration="2942000" />
     </task>
     <servers />
   </component>
