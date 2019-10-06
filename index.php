@@ -22,11 +22,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("body").css("background-color", "#212121");
+    $("p, h2, h1,label").css("color", "white");
+    $(".jumbotron").css("background-color", "#424242");
+    
+  });
+});
+</script>
 </head>
 <body id="home">
 
     <div class="jumbotron text-center">
-    <h1>Welkom, <?php echo htmlspecialchars($_SESSION["functie"]); ?>!</h1>
+    <button >Darkmode</button>
+    <h1>Welkom, <?php echo htmlspecialchars($_SESSION["naam"]); ?>!</h1>
         <h1>Health One</h1>
         <p>Kies je afdeling</p>
     </div>

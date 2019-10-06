@@ -8,6 +8,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,13 +16,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("body").css("background-color", "#212121");
+    $("p, h2, h1,label, td, th").css("color", "white");
+    $(".jumbotron").css("background-color", "#424242");
+  });
+});
+</script>
 </head>
 <body>
 <div class="jumbotron text-center">
+<button class="btn">Darkmode</button>
     <h1>Health One</h1>
     <p>Zoek patient</p>
 

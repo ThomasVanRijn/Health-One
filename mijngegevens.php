@@ -38,6 +38,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <input class="form-control" type="text" placeholder="Adres: <?php echo htmlspecialchars($_SESSION["adres"]); ?>" readonly><br>
     <input class="form-control" type="text" placeholder="Email: <?php echo htmlspecialchars($_SESSION["email"]); ?>" readonly><br>
     <input class="form-control" type="text" placeholder="Telefoonnummer: 0<?php echo htmlspecialchars($_SESSION["telefoonnummer"]); ?>" readonly><br>
+    <input class="form-control" type="text" placeholder="Functie: <?php echo htmlspecialchars($_SESSION["functie"]); ?>" readonly><br>
     <a href="reset-password.php" class="btn btn-success">Wachtwoord wijzigen</a>
   </div>
     </div>
