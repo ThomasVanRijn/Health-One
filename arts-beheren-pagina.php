@@ -22,7 +22,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="jumbotron text-center">
     <h1>Health One</h1>
-    <p>Zoek uw medicijn</p>
+    <p>Zoek de arts die u wilt beheren</p>
 
     <div class="container">
         <div class="progress">
@@ -57,13 +57,13 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                     echo "<td>" . $data["naam"] . "</td>";
                     echo "<td>" . $data["adres"] . "</td>";
                     echo "<td>" . $data["email"] . "</td>";
-                    echo "<td>" . "<a href='Arts-gegevens-wijzigen.php?id=" . $data['id'] . "'>" . "<button type='button' class='btn btn-primary '>" . "Arts gegevens wijzigen" . "</button>" . "</a>";
+                    echo "<td>" . "<a href='Arts-gegevens-wijzigen.php?id=" . $data['id'] . "'>" . "<button type='button' class='btn btn-success '>" . "Arts gegevens wijzigen" . "</button>" . "</a>";
                     echo "</tr>";
                 }
                 ?>
                 </tbody>
             </table>
-            <a href="arts_add.html"><button type="button" class="btn btn-primary">Arts toevoegen</button></a>
+            <a href="arts_add.html"><button type="button" class="btn btn-success">Arts toevoegen</button></a>
         </div>
     </div>
 </div>

@@ -60,19 +60,19 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Naam</th>
                             <th>Aandoening</th>
+                            <th>Medicijn</th>
+                            <th>Datum</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Lorem Ipsum</td>
-                            <td>
-                                <?php
+                            <td><?php
                                 echo $data['aandoeningen'];
-                                ?>
+                                ?></td>
+                            <td>Mecijn</td>
+                            <td>
+                                Datum
                             </td>
                             <td>
 
@@ -101,13 +101,11 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td><button><a href="medicijn-toevoegen.php">Medicijn toevoegen</a></button></td>
-                        </tr>
                     </tbody>
                 </table>
-                <table >
-                    <a href="patient-gegevens-wijzigen.php?id=<?php echo $data['id'] ?>"> <button type="button" class="btn btn-primary btn-block">Patiënt gegevens wijzigen</button></a><br><br>
+                <table>
+                    <a href="medicijn-toevoegen.php"><button class="btn btn-success btn-block">Medicijn toevoegen</button></a><br>
+                    <a href="patient-gegevens-wijzigen.php?id=<?php echo $data['id'] ?>"> <button type="button" class="btn btn-success btn-block">Patiënt gegevens wijzigen</button></a><br>
                     <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">
                         Patiënt verwijderen
                     </button>

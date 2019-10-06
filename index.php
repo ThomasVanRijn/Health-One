@@ -16,6 +16,7 @@
 <body id="home">
 
     <div class="jumbotron text-center">
+        
         <h1>Health One</h1>
         <p>Kies je afdeling</p>
     </div>
@@ -30,6 +31,9 @@
             </div>
             <div class="col-lg-4">
                 <a style="text-decoration: none" href="verzekering.php"><button class="btn btn-block">VERZEKERING</button></a>
+            </div>
+            <div class="col-lg-4">
+                <a style="text-decoration: none" href="login.php"><button class="btn btn-block">INLOGGEN</button></a>
             </div>
         </div>
     </div>

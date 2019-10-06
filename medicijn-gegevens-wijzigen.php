@@ -21,7 +21,7 @@
 <body>
 <div class="jumbotron text-center">
     <h1>Health One</h1>
-    <p>Patiënt toevoegen</p>
+    <p>Medcijn wijzigen</p>
 
     <div class="container">
         <div class="progress">
@@ -47,7 +47,7 @@
                     <input type="text" class="form-control" name="vergoed" id="vergoed" value='<?php echo $data['vergoed'] ?>'>
                 </p>
             
-                <input type="submit" value="wijzig" type="button" class="btn btn-primary btn-block">
+                <input type="submit" value="Wijzig" type="button" class="btn btn-success btn-block"><br>
             </form>
         </div>
     </div>

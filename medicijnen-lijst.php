@@ -57,13 +57,13 @@
                             echo "<td>" . $data["naam"] . "</td>";
                             echo "<td>" . $data["vergoed"] . "</td>";
                             echo "<td>" . $data["herhaal"] . "</td>";
-                            echo "<td>" . "<a href='medicijn-gegevens-wijzigen.php?id=" . $data['id'] . "'>" . "<button type='button' class='btn btn-primary '>" . "Medicijn gegevens wijzigen" . "</button>" . "</a>";
+                            echo "<td>" . "<a href='medicijn-gegevens-wijzigen.php?id=" . $data['id'] . "'>" . "<button type='button' class='btn btn-success'>" . "Medicijn gegevens wijzigen" . "</button>" . "</a>";
                             echo "</tr>";
                         }
                         ?>
                     </tbody>
                 </table>
-                <a href="medicijn_add.html"><button type="button" class="btn btn-primary">Medicijn toevoegen</button></a>
+                <a href="medicijn_add.html"><button type="button" class="btn btn-success">Medicijn toevoegen</button></a>
             </div>
         </div>
     </div>

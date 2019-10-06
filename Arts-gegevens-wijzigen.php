@@ -21,7 +21,7 @@ foreach ($result as &$data) {
 <body>
 <div class="jumbotron text-center">
     <h1>Health One</h1>
-    <p>Patiënt toevoegen</p>
+    <p>Arts wijzigen</p>
 
     <div class="container">
         <div class="progress">
@@ -51,7 +51,7 @@ foreach ($result as &$data) {
                     <input type="text" class="form-control" name="telefoonnummer" id="telefoonnummer" value='<?php echo $data['telefoonnummer'] ?>'>
                 </p>
 
-                <input type="submit" value="wijzig" type="button" class="btn btn-primary btn-block">
+                <input type="submit" value="Wijzig" type="button" class="btn btn-success btn-block"><br>
             </form>
         </div>
     </div>
