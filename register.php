@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Validate password
     if(empty(trim($_POST["password"]))){
-        $password_err = "Vul een wachtwoord in";     
+        $password_err = "Vul een wachtwoord";     
     } elseif(strlen(trim($_POST["password"])) < 6){
         $password_err = "Wachtwoord moet minstens uit 6 letters of cijfers bestaan";
     } else{

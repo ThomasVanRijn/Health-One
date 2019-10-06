@@ -1,4 +1,13 @@
-
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +42,7 @@
                 <a style="text-decoration: none" href="verzekering.php"><button class="btn btn-block">VERZEKERING</button></a>
             </div>
             <div class="col-lg-4">
-                <a style="text-decoration: none" href="login.php"><button class="btn btn-block">INLOGGEN</button></a>
+                <a style="text-decoration: none" href="logout.php"><button class="btn btn-block">UITLOGGEN</button></a>
             </div>
         </div>
     </div>

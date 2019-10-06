@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["functie"] = $functie;                              
                             
                             // Redirect user to welcome page
-                            header("location: welcome.php");
+                            header("location: index.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "Het wachtwoord komt niet overeen met de gerbuikersnaam";
