@@ -54,8 +54,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Password updated successfully. Destroy the session, and redirect to login page
-                session_destroy();
-                header("location: login.php");
+                
+                header("location: mijngegevens.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -71,35 +71,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
  
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
+    <title>Health One</title>
+    <link rel="shortcut icon" href="img/HealthOne-logo.png" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/24821f9d87.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <div class="wrapper">
-        <h2>Reset Password</h2>
-        <p>Please fill out this form to reset your password.</p>
+
+<body id="home">
+
+    <div class="jumbotron text-center">
+        <h1>Welkom, <?php echo htmlspecialchars($_SESSION["naam"]); ?>!</h1>
+        <h1>Health One</h1>
+        <p>Wachtwoord wijzigen</p>
+    </div>
+    <div class="container">
+        <h2>Wachtwoord wijzigen</h2>
+        <p>Hier kunt u uw wachtwoord wijzigen.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
             <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
-                <label>New Password</label>
+                <label>Nieuw wachtwoord</label>
                 <input type="password" name="new_password" class="form-control" value="<?php echo $new_password; ?>">
                 <span class="help-block"><?php echo $new_password_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label>
+                <label>Bevestig wachtwoord</label>
                 <input type="password" name="confirm_password" class="form-control">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link" href="welcome.php">Cancel</a>
+                <input type="submit" class="btn btn-success" value="Wijzigen">
+                <a class="btn btn-link" href="mijngegevens.php">Annuleren</a>
             </div>
         </form>
     </div>    

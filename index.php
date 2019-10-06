@@ -45,6 +45,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <div class="col-lg-4">
                 <a style="text-decoration: none" href="logout.php"><button class="btn btn-block">UITLOGGEN</button></a>
             </div>
+            <div class="col-lg-4">
+                <a style="text-decoration: none" href="mijngegevens.php"><button class="btn btn-block">MIJN GEGEVENS</button></a>
+            </div>
         </div>
     </div>
     <a class="info" href="#" data-toggle="popover" data-placement="left" title="Vragen?" data-content="Mail dan naar info@zilverenkruis.nl of bel 015-1234567">

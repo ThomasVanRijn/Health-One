@@ -54,6 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $naam = $row["naam"];
                         $adres = $row["adres"];
                         $telefoonnummer = $row["telefoonnummer"];
+                        $email = $row["email"];
                         $username = $row["username"];
                         $hashed_password = $row["password"];
                         if(password_verify($password, $hashed_password)){

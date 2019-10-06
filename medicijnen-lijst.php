@@ -77,7 +77,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div>
             
         </div><br>
-        <a href="logout.php" class="btn btn-danger">Uitloggen</a>
+        
     </div>
 
     <script>
