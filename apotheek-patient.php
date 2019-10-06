@@ -24,40 +24,44 @@
 
 <?php
 
-$db = new PDO("mysql:host=localhost;dbname=healthone","root", "");
-$query = $db->prepare("SELECT id, naam, verzekeringsnummer FROM patient");
+$db = new PDO("mysql:host=localhost;dbname=healthone", "root", "");
+$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+$queryRecept = $db->prepare("SELECT naam, hoeveelheid, datum FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where kaartnummer = :id ORDER BY datum DESC");
+$queryRecept->bindParam("id", $id);
+$queryName = $db->prepare("SELECT naam FROM patient where id = :id ");
+$queryName->bindParam("id", $id);
+$queryName->execute();
+$resultName = $queryName->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-
 <div class="container">
-    <div class="row text-center">
-        <div class="col">
-            <div class="form-group">
-                <input class="form-control" id="myInput" type="text" placeholder="Search..">
-            </div>
-        </div>
-    </div>
     <div class="row">
         <div class="col">
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Naam</th>
-                    <th>verzekeringsnummer</th>
+                    <th colspan="3"><?php echo $resultName[0]['naam']; ?></th>
+                </tr>
+                <tr>
+                    <th>medicijn</th>
+                    <th>hoeveelheid</th>
+                    <th>datum</th>
                 </tr>
                 </thead>
                 <tbody id="myTable">
                 <?php
-                $query->execute();
-                if ($query->rowCount() > 0){
-                    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($result as &$data){
-                        echo "<tr class=\"clickable\"
-                    onclick=\"window.location='apotheek-patient.php?id=" . $data['id'] . "'\"\">";
+                $queryRecept->execute();
+                if ($queryRecept->rowCount() > 0) {
+                    $resultRecept = $queryRecept->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($resultRecept as &$data) {
+                        echo "<tr>";
                         echo "<td>" . $data['naam'] . "</td>";
-                        echo "<td>" . $data['verzekeringsnummer'] . "</td>";
+                        echo "<td>" . $data['hoeveelheid'] . "</td>";
+                        echo "<td>" . $data['datum'] . "</td>";
                         echo "</tr>";
                     }
+                }else{
+                    echo "<td colspan='3'>" . "Er zijn nog geen medicijnen nodig" . "</td>";
                 }
                 ?>
                 </tbody>
@@ -65,16 +69,5 @@ $query = $db->prepare("SELECT id, naam, verzekeringsnummer FROM patient");
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase().trim();
-            $("#myTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
 </body>
 </html>
