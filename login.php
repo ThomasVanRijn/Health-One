@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, username, naam, telefoonnummer, adres, email, password FROM users WHERE username = :username";
+        $sql = "SELECT id, username, naam, telefoonnummer, adres, email, functie, password FROM users WHERE username = :username";
         
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -56,6 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $telefoonnummer = $row["telefoonnummer"];
                         $email = $row["email"];
                         $username = $row["username"];
+                        $username = $row["functie"];
                         $hashed_password = $row["password"];
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
@@ -68,7 +69,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["naam"] = $naam;  
                             $_SESSION["adres"] = $adres; 
                             $_SESSION["email"] = $email; 
-                            $_SESSION["telefoonnummer"] = $telefoonnummer;                            
+                            $_SESSION["telefoonnummer"] = $telefoonnummer;  
+                            $_SESSION["functie"] = $functie;                             
                             
                             // Redirect user to welcome page
                             header("location: index.php");

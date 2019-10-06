@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
-                if ($stmt->rowCount() == 1) {
+                if ($stmt->rowCount() == 10000000000) {
                     $username_err = "Deze gebruikersnaam bestaat al";
                 } else {
                     $username = trim($_POST["username"]);
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
-                if ($stmt->rowCount() == 1) {
+                if ($stmt->rowCount() == 1000000000000) {
                     $naam_err = "Deze naam bestaat al";
                 } else {
                     $naam = trim($_POST["naam"]);
@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
-                if ($stmt->rowCount() == 1) {
+                if ($stmt->rowCount() == 10000000000) {
                     $adres_err = "Dit adres bestaat al";
                 } else {
                     $adres = trim($_POST["adres"]);
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
-                if ($stmt->rowCount() == 1) {
+                if ($stmt->rowCount() == 100000000000) {
                     $email_err = "Deze email bestaat al";
                 } else {
                     $email = trim($_POST["email"]);
@@ -150,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
-                if ($stmt->rowCount() == 1) {
+                if ($stmt->rowCount() == 1000000000000000) {
                     $telefoonnummer_err = "Dit telefoonnummer bestaat al";
                 } else {
                     $telefoonnummer = trim($_POST["telefoonnummer"]);
@@ -212,12 +212,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+if ($functie == "Arts"){
+    $functie = "artsen";
+}
+
+
     // Check input errors before inserting in database
     if (empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($naam_err) && empty($adres_err) && empty($email_err) && empty($telefoonnummer_err) && empty($funtie_err)) {
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, naam, adres, email, telefoonnummer, functie) VALUES (:username, :password, :naam, :adres, :email, :telefoonnummer, :functie)";
-        
+        $sql = "INSERT INTO users (username, password, naam, adres, email, telefoonnummer, functie) VALUES (:username, :password, :naam, :adres, :email, :telefoonnummer, :functie)" ; 
 
         if ($stmt = $pdo->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
@@ -241,10 +245,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
                 // Redirect to login page
+                $sql = "INSERT INTO $functie (naam, adres, email, telefoonnummer) VALUES (:naam, :adres, :email, :telefoonnummer)";
 
-
+                if ($stmt = $pdo->prepare($sql)) {
+                    // Bind variables to the prepared statement as parameters
+                    $stmt->bindParam(":naam", $param_naam, PDO::PARAM_STR);
+                    $stmt->bindParam(":adres", $param_adres, PDO::PARAM_STR);
+                    $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
+                    $stmt->bindParam(":telefoonnummer", $param_telefoonnummer, PDO::PARAM_STR);
+                    
+                }
+                if ($stmt->execute()) {
                     header("location: login.php");
-
+                }
             } else {
                 echo "Something went wrong. Please try again later.";
             }
@@ -323,7 +336,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group <?php echo (!empty($functie_err)) ? 'has-error' : ''; ?>">
                 <label>Functie</label>
                 <select name="functie" value="<?php echo $functie; ?>" class="form-control">
-                    <option>artsen</option>
+                    <option>Arts</option>
                     <option>Apotheker</option>
                     <option>Verzekering</option>
                 </select>
