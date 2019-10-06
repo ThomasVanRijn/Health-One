@@ -17,6 +17,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.scss">
     <script src="https://kit.fontawesome.com/24821f9d87.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -25,7 +26,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body id="home">
 
     <div class="jumbotron text-center">
-        
+    <h1>Welkom, <?php echo htmlspecialchars($_SESSION["naam"]); ?>!</h1>
         <h1>Health One</h1>
         <p>Kies je afdeling</p>
     </div>
@@ -49,11 +50,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <a class="info" href="#" data-toggle="popover" data-placement="left" title="Vragen?" data-content="Mail dan naar info@zilverenkruis.nl of bel 015-1234567">
         <i class="fas fa-question-circle fa-4x float-right"></i>
     </a>
-
+</div>
     <script>
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover();
         });
-    </script>
+        }
+        
+</script>
 </body>
 </html>

@@ -31,7 +31,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div>
     </div>
 </div>
-
 <div class="container">
     <div class="row text-center">
         <div class="col">

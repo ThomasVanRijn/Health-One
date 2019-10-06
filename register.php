@@ -3,8 +3,9 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$username = $password = $confirm_password = $naam = $adres = $email = $telefoonnummer ="";
+$username_err = $password_err = $confirm_password_err = $naam_err = $adres_err = $email_err = $telefoonnummer_err ="";
+
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -38,6 +39,126 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Close statement
         unset($stmt);
     }
+
+        // Validate username
+        if(empty(trim($_POST["naam"]))){
+            $naam_err = "Vul alsutblieft uw naam in";
+        } else{
+            // Prepare a select statement
+            $sql = "SELECT id FROM users WHERE naam = :naam";
+            
+            if($stmt = $pdo->prepare($sql)){
+                // Bind variables to the prepared statement as parameters
+                $stmt->bindParam(":naam", $param_naam, PDO::PARAM_STR);
+                
+                // Set parameters
+                $param_naam = trim($_POST["naam"]);
+                
+                // Attempt to execute the prepared statement
+                if($stmt->execute()){
+                    if($stmt->rowCount() == 1){
+                        $naam_err = "Deze naam bestaat al";
+                    } else{
+                        $naam = trim($_POST["naam"]);
+                    }
+                } else{
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+             
+            // Close statement
+            unset($stmt);
+        }
+
+                // Validate username
+                if(empty(trim($_POST["adres"]))){
+                    $adres_err = "Vul alsutblieft uw adres in";
+                } else{
+                    // Prepare a select statement
+                    $sql = "SELECT id FROM users WHERE adres = :adres";
+                    
+                    if($stmt = $pdo->prepare($sql)){
+                        // Bind variables to the prepared statement as parameters
+                        $stmt->bindParam(":adres", $param_adres, PDO::PARAM_STR);
+                        
+                        // Set parameters
+                        $param_adres = trim($_POST["adres"]);
+                        
+                        // Attempt to execute the prepared statement
+                        if($stmt->execute()){
+                            if($stmt->rowCount() == 1){
+                                $adres_err = "Dit adres bestaat al";
+                            } else{
+                                $adres = trim($_POST["adres"]);
+                            }
+                        } else{
+                            echo "Oops! Something went wrong. Please try again later.";
+                        }
+                    }
+                     
+                    // Close statement
+                    unset($stmt);
+                }
+
+                        // Validate username
+        if(empty(trim($_POST["email"]))){
+            $email_err = "Vul alsutblieft uw email in";
+        } else{
+            // Prepare a select statement
+            $sql = "SELECT id FROM users WHERE email = :email";
+            
+            if($stmt = $pdo->prepare($sql)){
+                // Bind variables to the prepared statement as parameters
+                $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
+                
+                // Set parameters
+                $param_email = trim($_POST["email"]);
+                
+                // Attempt to execute the prepared statement
+                if($stmt->execute()){
+                    if($stmt->rowCount() == 1){
+                        $email_err = "Deze email bestaat al";
+                    } else{
+                        $email = trim($_POST["email"]);
+                    }
+                } else{
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+             
+            // Close statement
+            unset($stmt);
+        }
+
+                // Validate username
+                if(empty(trim($_POST["telefoonnummer"]))){
+                    $naam_err = "Vul alsutblieft uw telefoonnummer in";
+                } else{
+                    // Prepare a select statement
+                    $sql = "SELECT id FROM users WHERE telefoonnummer = :telefoonnummer";
+                    
+                    if($stmt = $pdo->prepare($sql)){
+                        // Bind variables to the prepared statement as parameters
+                        $stmt->bindParam(":telefoonnummer", $param_telefoonnummer, PDO::PARAM_STR);
+                        
+                        // Set parameters
+                        $param_telefoonnummer = trim($_POST["telefoonnummer"]);
+                        
+                        // Attempt to execute the prepared statement
+                        if($stmt->execute()){
+                            if($stmt->rowCount() == 1){
+                                $telefoonnummer_err = "Dit telefoonnummer bestaat al";
+                            } else{
+                                $telefoonnummer = trim($_POST["telefoonnummer"]);
+                            }
+                        } else{
+                            echo "Oops! Something went wrong. Please try again later.";
+                        }
+                    }
+                     
+                    // Close statement
+                    unset($stmt);
+                }
     
     // Validate password
     if(empty(trim($_POST["password"]))){
@@ -59,19 +180,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($naam_err) && empty($adres_err) && empty($email_err) && empty($telefoonnummer_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
+        $sql = "INSERT INTO users (username, password, naam, adres, email, telefoonnummer) VALUES (:username, :password, :naam, :adres, :email, :telefoonnummer)";
          
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
+            $stmt->bindParam(":naam", $param_naam, PDO::PARAM_STR);
+            $stmt->bindParam(":adres", $param_adres, PDO::PARAM_STR);
+            $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
+            $stmt->bindParam(":telefoonnummer", $param_telefoonnummer, PDO::PARAM_STR);
             
             // Set parameters
             $param_username = $username;
+            $param_naam = $naam;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            $param_adres = $adres;
+            $param_email = $email;
+            $param_telefoonnummer = $telefoonnummer;
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -129,6 +258,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <label>Bevestig wachtwoord</label>
                 <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($naam_err)) ? 'has-error' : ''; ?>">
+                <label>Naam</label>
+                <input type="name" name="naam" class="form-control" value="<?php echo $naam; ?>">
+                <span class="help-block"><?php echo $naam_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($adres_err)) ? 'has-error' : ''; ?>">
+                <label>Adres</label>
+                <input type="adres" name="adres" class="form-control" value="<?php echo $adres; ?>">
+                <span class="help-block"><?php echo $adres_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                <label>Email</label>
+                <input type="name" name="email" class="form-control" value="<?php echo $email; ?>">
+                <span class="help-block"><?php echo $email_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($telefoonnummer_err)) ? 'has-error' : ''; ?>">
+                <label>Telefoonnummer</label>
+                <input type="number" name="telefoonnummer" class="form-control" value="<?php echo $telefoonnummer; ?>">
+                <span class="help-block"><?php echo $telefoonnummer_err; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-success" value="Login">

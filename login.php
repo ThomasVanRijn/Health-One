@@ -12,8 +12,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$username = $password = "";
+$username = $password = $naam = "";
 $username_err = $password_err = "";
+
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -34,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, username, password FROM users WHERE username = :username";
+        $sql = "SELECT id, username, naam, telefoonnummer, adres, email, password FROM users WHERE username = :username";
         
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -42,6 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_username = trim($_POST["username"]);
+            $param_naam = trim($_POST["naam"]);
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -49,6 +51,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if($stmt->rowCount() == 1){
                     if($row = $stmt->fetch()){
                         $id = $row["id"];
+                        $naam = $row["naam"];
+                        $adres = $row["adres"];
+                        $telefoonnummer = $row["telefoonnummer"];
                         $username = $row["username"];
                         $hashed_password = $row["password"];
                         if(password_verify($password, $hashed_password)){
@@ -59,7 +64,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
-                            $_SESSION["functie"] = $functie;                              
+                            $_SESSION["naam"] = $naam;  
+                            $_SESSION["adres"] = $adres; 
+                            $_SESSION["email"] = $email; 
+                            $_SESSION["telefoonnummer"] = $telefoonnummer;                            
                             
                             // Redirect user to welcome page
                             header("location: index.php");
