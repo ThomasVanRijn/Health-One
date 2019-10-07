@@ -33,10 +33,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
     <div class="container">
     <div class="row text-center">
-        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?>
-        </b>Welkom op onze site u bent een </h1>
-        <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
-        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+        <h1>Hoi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?>
+        </b>Welkom op onze site u bent een <?php echo htmlspecialchars($_SESSION["functie"]); ?> en kunt niet op de pagina die u net bezocht. Klik op de volgende link om naar de 
+    pagina te gaan waar u wel recht op heeft: <a href="<?php echo htmlspecialchars($_SESSION["functie"]); ?>.php">Link</a></h1><br>
     </p>
     </div>
     </div>

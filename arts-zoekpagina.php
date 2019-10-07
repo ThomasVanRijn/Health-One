@@ -3,7 +3,7 @@
 session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["functie"] !== "Arts") {
     header("location: login.php");
     exit;
 }
@@ -72,7 +72,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
+<a href="logout.php"><button class="btn btn-danger">Uitloggen</button></a>
 </body>
 <link rel="stylesheet" href="css/darkmode.css">
 <script src="darkmode.js"></script>

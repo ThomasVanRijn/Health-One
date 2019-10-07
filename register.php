@@ -215,7 +215,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($functie == "Arts"){
     $functie = "artsen";
 }
-
+if($functie == "Apotheker"){
+    $functie = "apotheker";
+}
+if($functie == "Verzekering"){
+    $functie = "verzekering";
+}
 
     // Check input errors before inserting in database
     if (empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($naam_err) && empty($adres_err) && empty($email_err) && empty($telefoonnummer_err) && empty($funtie_err)) {

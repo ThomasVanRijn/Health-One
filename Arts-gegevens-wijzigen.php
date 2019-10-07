@@ -3,7 +3,7 @@
 session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["functie"] !== "verzekering") {
     header("location: login.php");
     exit;
 }
@@ -32,6 +32,7 @@ foreach ($result as &$data) {
 }
 ?>
 <body>
+
 <div class="jumbotron text-center">
     <h1>Health One</h1>
     <p>Arts wijzigen</p>

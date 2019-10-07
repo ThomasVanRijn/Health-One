@@ -74,8 +74,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["telefoonnummer"] = $telefoonnummer;  
                             $_SESSION["functie"] = $functie;                             
                             
+
+                            if ($functie == "Arts"){
+                                header("location: arts-zoekpagina.php");
+                            }
+                            elseif ($functie == "verzekering"){
+                                header("location: verzekering.php");
+                            }
+                            elseif ($functie == "apotheker") {
+                                header("location: apotheek.php");
+                            }
                             // Redirect user to welcome page
-                            header("location: index.php");
+                            
+                            
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "Het wachtwoord komt niet overeen met de gerbuikersnaam";

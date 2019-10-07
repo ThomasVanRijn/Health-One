@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 07 okt 2019 om 10:01
+-- Gegenereerd op: 07 okt 2019 om 20:10
 -- Serverversie: 10.4.6-MariaDB
--- PHP-versie: 7.1.32
+-- PHP-versie: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -23,6 +23,27 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `healthone` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `healthone`;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `apotheker`
+--
+
+CREATE TABLE `apotheker` (
+  `id` int(255) NOT NULL,
+  `naam` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefoonnummer` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `apotheker`
+--
+
+INSERT INTO `apotheker` (`id`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
+(1, 'apo21341', '234324532', '423423', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -46,7 +67,9 @@ INSERT INTO `artsen` (`id`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
 (1, 'Thomas van Rijn', 'Straat 1', 'thomas@gmail.com', 636356592),
 (2, 'Luca van Leeuwen', 'Straat 2', 'luca@gmail.com', 623545812),
 (3, 'Collin van de Laar', 'Straat 3', 'collin@gmail.com', 659874581),
-(4, 'Gijs de Lange', 'Straat 4', 'gijs@gmail.com', 621547852);
+(4, 'Gijs de Lange', 'Straat 4', 'gijs@gmail.com', 621547852),
+(9, 'artstest', 'artstest', 'arts@arts.com', 2342134),
+(10, 'arts1234', 'arts1234', 'fsdf', 3434453);
 
 -- --------------------------------------------------------
 
@@ -133,11 +156,42 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `functie`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
 (17, 'test', '$2y$10$uoY02OwPMblodY.IR9bV4uHBSVLzHQKmVZSYihGJSJaYQXGDIyL.y', '2019-10-07 08:51:58', 'artsen', 'test', 'test', 'test', 989021),
-(18, 'arts1', '$2y$10$4dHpPL9q7xSo/N0vVG8hhOu3jycf8DGJulcUp4zW4Kj5zlvpDs8SW', '2019-10-07 08:58:31', 'artsen', 'Piet', 'straat1', 'asd@asd.com', 2147483647);
+(18, 'arts1', '$2y$10$4dHpPL9q7xSo/N0vVG8hhOu3jycf8DGJulcUp4zW4Kj5zlvpDs8SW', '2019-10-07 08:58:31', 'artsen', 'Piet', 'straat1', 'asd@asd.com', 2147483647),
+(23, 'apo123', '$2y$10$0PZ.j.m90S61/fxAQknO.Og2A5p96J5aicnXNA6eam4bV3wle3wZS', '2019-10-07 19:46:21', 'apotheker', 'apo21341', '234324532', '423423', 2147483647),
+(24, 'verzekering', '$2y$10$yrNs9U5z06tO0rWljfSkAuumZFw2vSsgy20Aqf2IQ5vuj2hudeFF2', '2019-10-07 19:48:24', 'verzekering', 'verzekering', 'verzekering', 'verzekering@.com', 24322354),
+(25, 'artstest', '$2y$10$WNvtyfN.mb.2kcVmZIUL5ukEeFa9DVv2clVGh//BiL4/0./3B7sAS', '2019-10-07 19:55:18', 'artsen', 'artstest', 'artstest', 'arts@arts.com', 2342134),
+(26, 'arts1234', '$2y$10$GkNxu/BgjiEZKVRKTMrG8OEbA8ulp.vRn/zs9tOEZhM35PyKNzUnK', '2019-10-07 20:05:09', 'artsen', 'arts1234', 'arts1234', 'fsdf', 3434453);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `verzekering`
+--
+
+CREATE TABLE `verzekering` (
+  `id` int(255) NOT NULL,
+  `naam` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefoonnummer` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `verzekering`
+--
+
+INSERT INTO `verzekering` (`id`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
+(1, 'verzekering', 'verzekering', 'verzekering@.com', 24322354);
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
+
+--
+-- Indexen voor tabel `apotheker`
+--
+ALTER TABLE `apotheker`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexen voor tabel `artsen`
@@ -173,14 +227,26 @@ ALTER TABLE `users`
   ADD KEY `functie` (`functie`);
 
 --
+-- Indexen voor tabel `verzekering`
+--
+ALTER TABLE `verzekering`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
+
+--
+-- AUTO_INCREMENT voor een tabel `apotheker`
+--
+ALTER TABLE `apotheker`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT voor een tabel `artsen`
 --
 ALTER TABLE `artsen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT voor een tabel `medicijnen`
@@ -204,7 +270,13 @@ ALTER TABLE `recepten`
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT voor een tabel `verzekering`
+--
+ALTER TABLE `verzekering`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
