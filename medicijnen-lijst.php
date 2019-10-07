@@ -36,7 +36,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
         <div class="container">
             <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:50%"></div>
+                <div class="darkmode-ignore progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:50%"></div>
             </div>
         </div>
     </div>
@@ -80,16 +80,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase().trim();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 </body>
-
+<link rel="stylesheet" href="css/darkmode.css">
+<script src="darkmode.js"></script>
 </html>

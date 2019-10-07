@@ -18,7 +18,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="darkmode.js"></script>
+    
 </head>
 <body>
 <?php
@@ -30,7 +30,6 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
     <div class="jumbotron text-center">
-        <button class="buttonSwitch">Dark/Light</button>
         <h1>Health One</h1>
         <p>Zoek uw patient</p>
 
@@ -75,16 +74,10 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase().trim();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
+    
 </body>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.0/lib/darkmode-js.min.js"></script>
+<script src="darkmode.js"></script>
+<link rel="stylesheet" href="css/darkmode.css">
+
 </html>

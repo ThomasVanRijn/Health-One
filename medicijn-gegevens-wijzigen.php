@@ -18,7 +18,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="darkmode.js"></script>
 </head>
 <?php
                 $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
@@ -31,13 +30,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 ?>
 <body>
 <div class="jumbotron text-center">
-    <button class="buttonSwitch"> Dark/Light</button>
     <h1>Health One</h1>
     <p>Medcijn wijzigen</p>
 
     <div class="container">
         <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:75%"></div>
+            <div class="darkmode-ignore progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:75%"></div>
         </div>
     </div>
 </div>
@@ -63,7 +61,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </form>
         </div>
     </div>
-    <button type='button' class='btn btn-danger btn-block' data-toggle='modal' data-target='#exampleModal'>Verwijderen</button>
+    <button type='button' class='btn btn-danger btn-block darkmode-ignore' data-toggle='modal' data-target='#exampleModal'>Verwijderen</button>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -79,7 +77,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
                     <form method="post" action="medicijn_verwijder.php?id=<?php echo $data['id']; ?>">
-                        <button type="submit" name="id" value="<?php echo $_GET['id'] ?>" class="btn btn-danger">Medicijn verwijderen</button>
+                        <button type="submit" name="id" value="<?php echo $_GET['id'] ?>" class="darkmode-ignore btn btn-danger">Medicijn verwijderen</button>
                     </form>
                 </div>
             </div>
@@ -87,4 +85,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
 </div>
 </body>
+<link rel="stylesheet" href="css/darkmode.css">
+<script src="darkmode.js"></script>
 </html>

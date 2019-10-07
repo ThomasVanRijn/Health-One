@@ -12,14 +12,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <html lang="en">
 <head>
     <title>Health One</title>
+    <link rel="shortcut icon" href="img/HealthOne-logo.png" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/24821f9d87.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="darkmode.js"></script>
 </head>
+
 <?php
 $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
 $query = $db->prepare("SELECT * FROM artsen WHERE id = " . $_GET['id']);
@@ -31,13 +33,12 @@ foreach ($result as &$data) {
 ?>
 <body>
 <div class="jumbotron text-center">
-  <button class="buttonSwitch">Dark/Light</button>
     <h1>Health One</h1>
     <p>Arts wijzigen</p>
 
     <div class="container">
         <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:75%"></div>
+            <div class="darkmode-ignore progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:75%"></div>
         </div>
     </div>
 </div>
@@ -67,7 +68,7 @@ foreach ($result as &$data) {
             </form>
         </div>
     </div>
-    <button type='button' class='btn btn-danger btn-block' data-toggle='modal' data-target='#exampleModal'>Verwijderen</button>
+    <button type='button' class='darkmode-ignore btn btn-danger btn-block' data-toggle='modal' data-target='#exampleModal'>Verwijderen</button>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -91,4 +92,6 @@ foreach ($result as &$data) {
     </div>
 </div>
 </body>
+<link rel="stylesheet" href="css/darkmode.css">
+<script src="darkmode.js"></script>
 </html>

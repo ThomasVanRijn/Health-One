@@ -1,0 +1,17 @@
+.darkmode--activated th{
+    color: white;
+    transition: 0.7s;
+}
+.darkmode--activated td{
+    color: white;
+    transition: 0.7s;
+}
+img {
+    width: 350px !important;
+}
+
+.darkmode--activated label{
+    color: white;
+    transition: 0.7s;
+}
+

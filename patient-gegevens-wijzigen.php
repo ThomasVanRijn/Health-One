@@ -35,7 +35,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     <div class="container">
         <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:75%"></div>
+            <div class="darkmode-ignore progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:75%"></div>
         </div>
     </div>
 </div>
@@ -78,4 +78,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
 </div>
 </body>
+<link rel="stylesheet" href="css/darkmode.css">
+<script src="darkmode.js"></script>
 </html>

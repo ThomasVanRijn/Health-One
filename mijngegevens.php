@@ -21,13 +21,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="darkmode.js"></script>
 </head>
 
 <body id="home">
 
     <div class="jumbotron text-center">
-        <button class="buttonSwitch">Dark/Light</button>
         <h1>Welkom, <?php echo htmlspecialchars($_SESSION["naam"]); ?>!</h1>
         <h1>Health One</h1>
         <p>Gegevens beheren</p>
@@ -41,6 +39,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <input class="form-control" type="text" placeholder="Email: <?php echo htmlspecialchars($_SESSION["email"]); ?>" readonly><br>
     <input class="form-control" type="text" placeholder="Telefoonnummer: 0<?php echo htmlspecialchars($_SESSION["telefoonnummer"]); ?>" readonly><br>
     <input class="form-control" type="text" placeholder="Functie: <?php echo htmlspecialchars($_SESSION["functie"]); ?>" readonly><br>
-    <a href="reset-password.php" class="btn btn-success">Wachtwoord wijzigen</a>
+    <a href="reset-password.php" class="darkmode-ignore btn btn-success">Wachtwoord wijzigen</a>
   </div>
     </div>
+</body>
+<link rel="stylesheet" href="css/darkmode.css">
+<script src="darkmode.js"></script>
+</html>

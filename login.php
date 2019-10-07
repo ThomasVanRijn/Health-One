@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_username = trim($_POST["username"]);
-            $param_naam = trim($_POST["naam"]);
+            
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -111,14 +111,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="darkmode.js"></script>
-
 </head>
 <body id="home">
 
     <div class="jumbotron text-center">
-      <button class="buttonSwitch">Dark/Light</button>
         <h1>Health One</h1>
         <p>Inloggen</p>
     </div>
@@ -138,10 +134,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-success" value="Login">
+                <input type="submit" class="darkmode-ignore btn btn-success" value="Login">
             </div>
             <p>Nog geen account? <a href="register.php">Registreer u hierzo</a>.</p>
         </form>
     </div>
 </body>
+<link rel="stylesheet" href="css/darkmode.css">
+<script src="darkmode.js"></script>
+
 </html>

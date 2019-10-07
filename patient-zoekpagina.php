@@ -1,15 +1,16 @@
 <?php
 // Initialize the session
 session_start();
- 
+
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Health One</title>
     <meta charset="utf-8">
@@ -19,22 +20,23 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-<?php
-include ("database.php");
-$db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
-$query = $db->prepare("SELECT * FROM patient");
-$query->execute();
-$result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-?>
+<body>
+    <?php
+    include("database.php");
+    $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
+    $query = $db->prepare("SELECT * FROM patient");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    ?>
     <div class="jumbotron text-center">
         <h1>Health One</h1>
         <p>Zoek uw patient</p>
 
         <div class="container">
             <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:50%"></div>
+                <div class="darkmode-ignore progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:50%"></div>
             </div>
         </div>
     </div>
@@ -51,16 +53,16 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="col">
                 <table class="table table-hover">
                     <thead>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Leeftijd</th>
-                        <th>Email</th>
-                    </tr>
+                        <tr>
+                            <th>Naam</th>
+                            <th>Leeftijd</th>
+                            <th>Email</th>
+                        </tr>
                     </thead>
                     <tbody id="myTable">
                         <?php
-                        foreach($result as &$data) {
-                        echo "<tr>";
+                        foreach ($result as &$data) {
+                            echo "<tr>";
                             echo "<td>"  . "<a href='patient-gegevens.php?id=" . $data['id'] . "'>" . $data["naam"]  . "</a></td>";
                             echo "<td>" . $data["leeftijd"] . "</td>";
                             echo "<td>" . $data["email"] . "</td>";
@@ -73,15 +75,8 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase().trim();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 </body>
+<link rel="stylesheet" href="css/darkmode.css">
+<script src="darkmode.js"></script>
+
 </html>
