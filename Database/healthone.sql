@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 06 okt 2019 om 16:54
+-- Gegenereerd op: 07 okt 2019 om 10:01
 -- Serverversie: 10.4.6-MariaDB
--- PHP-versie: 7.3.9
+-- PHP-versie: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,7 +35,7 @@ CREATE TABLE `artsen` (
   `naam` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `adres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telefoonnummer` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL
+  `telefoonnummer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -43,11 +43,10 @@ CREATE TABLE `artsen` (
 --
 
 INSERT INTO `artsen` (`id`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
-(1, 'Ramiz van der Meijden', 'Somerenseweg 190', 'b5uefxp7kyl@groupbuff.com', '06-9046995'),
-(2, 'Abygail de Mos', 'Linthorst Homanlaan 86', '0uibufvyrogb@groupbuff.com', ' 06-6580620'),
-(3, 'Antoine Jansema', 'Schulpweg 15', 'h8s9yq4cqvo@powerencry.com', '06-8766940'),
-(4, 'Jian van de Loo', 'Zijtak Oostzijde 12', 'voklx5xpgq@powerencry.com', '06-86579064'),
-(5, 'Gulsum Coolen', 'Nieuwstraat 198', 'j21ug9v175@meantinc.com', '06-51531500');
+(1, 'Thomas van Rijn', 'Straat 1', 'thomas@gmail.com', 636356592),
+(2, 'Luca van Leeuwen', 'Straat 2', 'luca@gmail.com', 623545812),
+(3, 'Collin van de Laar', 'Straat 3', 'collin@gmail.com', 659874581),
+(4, 'Gijs de Lange', 'Straat 4', 'gijs@gmail.com', 621547852);
 
 -- --------------------------------------------------------
 
@@ -100,6 +99,19 @@ INSERT INTO `patient` (`id`, `naam`, `leeftijd`, `adres`, `email`, `telefoonnumm
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `recepten`
+--
+
+CREATE TABLE `recepten` (
+  `id` int(11) NOT NULL,
+  `uitgeschreven` timestamp NOT NULL DEFAULT current_timestamp(),
+  `opgehaald` timestamp NOT NULL DEFAULT current_timestamp(),
+  `patient_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `users`
 --
 
@@ -114,6 +126,14 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefoonnummer` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `functie`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
+(17, 'test', '$2y$10$uoY02OwPMblodY.IR9bV4uHBSVLzHQKmVZSYihGJSJaYQXGDIyL.y', '2019-10-07 08:51:58', 'artsen', 'test', 'test', 'test', 989021),
+(18, 'arts1', '$2y$10$4dHpPL9q7xSo/N0vVG8hhOu3jycf8DGJulcUp4zW4Kj5zlvpDs8SW', '2019-10-07 08:58:31', 'artsen', 'Piet', 'straat1', 'asd@asd.com', 2147483647);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -138,6 +158,13 @@ ALTER TABLE `patient`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexen voor tabel `recepten`
+--
+ALTER TABLE `recepten`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_id` (`patient_id`);
+
+--
 -- Indexen voor tabel `users`
 --
 ALTER TABLE `users`
@@ -153,7 +180,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT voor een tabel `artsen`
 --
 ALTER TABLE `artsen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT voor een tabel `medicijnen`
@@ -168,10 +195,26 @@ ALTER TABLE `patient`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=349;
 
 --
+-- AUTO_INCREMENT voor een tabel `recepten`
+--
+ALTER TABLE `recepten`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- Beperkingen voor geëxporteerde tabellen
+--
+
+--
+-- Beperkingen voor tabel `recepten`
+--
+ALTER TABLE `recepten`
+  ADD CONSTRAINT `recepten_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

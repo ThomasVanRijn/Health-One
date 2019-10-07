@@ -48,7 +48,7 @@ $(document).ready(function(){
                 <a style="text-decoration: none" href="arts-zoekpagina.php"><button class="btn btn-block">ARTS</button></a>
             </div>
             <div class="col-lg-4" >
-                <a style="text-decoration: none" href="apotheek.php"><button class="btn btn-block">APOTHEEK</button></a>
+                <a style="text-decoration: none" href="patient-zoekpagina.php"><button class="btn btn-block">APOTHEEK</button></a>
             </div>
             <div class="col-lg-4">
                 <a style="text-decoration: none" href="verzekering.php"><button class="btn btn-block">VERZEKERING</button></a>
