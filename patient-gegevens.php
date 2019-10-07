@@ -79,17 +79,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <tr>
                             <td>1</td>
                             <td>Lorem Ipsum</td>
-                            <td>
-                                <?php
-                                echo $data['aandoeningen'];
-                                ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><button><a href="medicijn-toevoegen.php">Recept uitschrijven</a></button></td>
+                            <td><?php echo $data['aandoeningen']; ?></td>
                         </tr>
                     </tbody>
                 </table>
+                <button><a href="recept-uitschrijven.php">Recept uitschrijven</a></button>
             </div>
         </div>
     </div>
