@@ -1,4 +1,14 @@
 <?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
+<?php
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 try{
@@ -28,11 +38,11 @@ try{
             $_REQUEST['vergoed']="Ja";
         }
     // Create prepared statement
-    $sql = "INSERT INTO medicijnen (medicijnen_id, naam, herhaal ,vergoed) VALUES (:medicijnen_id, :naam, :herhaal ,:vergoed);";
+    $sql = "INSERT INTO medicijnen (id, naam, herhaal ,vergoed) VALUES (:id, :naam, :herhaal ,:vergoed);";
     $stmt = $pdo->prepare($sql);
 
     // Bind parameters to statement
-    $stmt->bindParam(':medicijnen_id', $_REQUEST['medicijnen_id']);
+    $stmt->bindParam(':id', $_REQUEST['id']);
     $stmt->bindParam(':naam', $_REQUEST['naam']);
     $stmt->bindParam(':herhaal', $_REQUEST['herhaal']);
     $stmt->bindParam(':vergoed', $_REQUEST['vergoed']);

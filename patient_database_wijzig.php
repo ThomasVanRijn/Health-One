@@ -13,7 +13,6 @@ try{
 try{
     // Create prepared statement
     $stmt = $pdo->prepare("UPDATE patient SET naam = :naam, leeftijd = :leeftijd, adres = :adres, email = :email, telefoonnummer = :telefoonnummer, verzekeringsnummer = :verzekeringsnummer, aandoeningen = :aandoeningen WHERE id = :id");
- 
     // Bind parameters to statement
     $stmt->bindParam('id', $_GET['id']);
     $stmt->bindParam('naam', $_POST['naam']);

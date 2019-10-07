@@ -1,3 +1,13 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +31,7 @@
 <body>
 <div class="jumbotron text-center">
     <h1>Health One</h1>
-    <p>Patiënt toevoegen</p>
+    <p>Patiënt wijzigen</p>
 
     <div class="container">
         <div class="progress">
@@ -62,7 +72,7 @@
                     <label for="email">Aandoeningen</label>
                     <input type="text" class="form-control" name="aandoeningen" id="aandoeningen" value='<?php echo $data['aandoeningen'] ?>'>
                 </p>
-                <input type="submit" value="wijzig" type="button" class="btn btn-primary">
+                <input type="submit" value="Wijzig" type="button" class="btn btn-success">
             </form>
         </div>
     </div>

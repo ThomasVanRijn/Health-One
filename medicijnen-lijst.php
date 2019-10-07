@@ -1,3 +1,13 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,15 +67,17 @@
                             echo "<td>" . $data["naam"] . "</td>";
                             echo "<td>" . $data["vergoed"] . "</td>";
                             echo "<td>" . $data["herhaal"] . "</td>";
-                            echo "<td>" . "<a href='medicijn-gegevens-wijzigen.php?id=" . $data['medicijnen_id'] . "'>" . "<button type='button' class='btn btn-primary '>" . "Medicijn gegevens wijzigen" . "</button>" . "</a>";
+                            echo "<td>" . "<a href='medicijn-gegevens-wijzigen.php?id=" . $data['id'] . "'>" . "<button type='button' class='btn btn-success'>" . "Medicijn gegevens wijzigen" . "</button>" . "</a>";
                             echo "</tr>";
                         }
                         ?>
                     </tbody>
                 </table>
-                <a href="medicijn_add.html"><button type="button" class="btn btn-primary">Medicijn toevoegen</button></a>
+                <a href="medicijn_add.html"><button type="button" class="btn btn-success">Medicijn toevoegen</button></a>
             </div>
-        </div>
+            
+        </div><br>
+        
     </div>
 
     <script>

@@ -1,3 +1,13 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +66,7 @@
                             echo "<tr>";
                             echo "<td>" . $data["naam"] . "</td>";
                             echo "<td>" . $data["vergoed"] . "</td>";
-                            echo "<td>" . "<a href='medicijn-add.php?medicijnen_id2=" . $data["medicijnen_id"] . "&id=" . $data['id'] ."'>" . "Toevoegen" ."</button>";
+                            echo "<td>" . "<a href='medicijn-add.php?id2=" . $data["id"] . "&id=" . $data['id'] ."'>" . "Toevoegen" ."</button>";
                             echo "</tr>";
                         }
                         ?>
@@ -65,7 +75,6 @@
             </div>
         </div>
     </div>
-
     <script>
         $(document).ready(function() {
             $("#myInput").on("keyup", function() {

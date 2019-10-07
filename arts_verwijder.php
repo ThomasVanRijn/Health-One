@@ -1,6 +1,6 @@
 <?php
 include "database.php";
-$query = $db->prepare("DELETE FROM artsen WHERE id = :id");
+$query = $db->prepare("DELETE FROM artsen WHERE id = :id"); 
 echo var_dump($_GET["id"]);
 $query->bindParam("id", $_GET["id"]);
 $query->execute();

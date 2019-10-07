@@ -1,3 +1,13 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +21,7 @@
 </head>
 <?php
                 $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
-                $query = $db->prepare("SELECT * FROM medicijnen WHERE medicijnen_id = " . $_GET['id']);
+                $query = $db->prepare("SELECT * FROM medicijnen WHERE id = " . $_GET['id']);
 
                 $query->execute();
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -21,7 +31,7 @@
 <body>
 <div class="jumbotron text-center">
     <h1>Health One</h1>
-    <p>Patiënt toevoegen</p>
+    <p>Medcijn wijzigen</p>
 
     <div class="container">
         <div class="progress">
@@ -47,7 +57,7 @@
                     <input type="text" class="form-control" name="vergoed" id="vergoed" value='<?php echo $data['vergoed'] ?>'>
                 </p>
             
-                <input type="submit" value="wijzig" type="button" class="btn btn-primary btn-block">
+                <input type="submit" value="Wijzig" type="button" class="btn btn-success btn-block"><br>
             </form>
         </div>
     </div>

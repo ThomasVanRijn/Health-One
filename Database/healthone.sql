@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 02 okt 2019 om 12:33
+-- Gegenereerd op: 06 okt 2019 om 16:54
 -- Serverversie: 10.4.6-MariaDB
--- PHP-versie: 7.1.32
+-- PHP-versie: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `healthone`
 --
-CREATE DATABASE IF NOT EXISTS `healthone` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `healthone` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `healthone`;
 
 -- --------------------------------------------------------
@@ -32,11 +32,11 @@ USE `healthone`;
 
 CREATE TABLE `artsen` (
   `id` int(11) NOT NULL,
-  `naam` varchar(255) NOT NULL,
-  `adres` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `telefoonnummer` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `naam` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefoonnummer` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `artsen`
@@ -57,20 +57,18 @@ INSERT INTO `artsen` (`id`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
 
 CREATE TABLE `medicijnen` (
   `id` int(255) NOT NULL,
-  `naam` varchar(255) NOT NULL,
+  `naam` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `herhaal` tinyint(1) NOT NULL,
   `vergoed` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `medicijnen`
 --
 
 INSERT INTO `medicijnen` (`id`, `naam`, `herhaal`, `vergoed`) VALUES
-(1, 'test', 1, 1),
 (2, 'aids pil', 1, 0),
-(3, 'naam', 1, 1),
-(4, 'papier', 1, 0);
+(3, 'naampje', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -80,25 +78,42 @@ INSERT INTO `medicijnen` (`id`, `naam`, `herhaal`, `vergoed`) VALUES
 
 CREATE TABLE `patient` (
   `id` int(255) NOT NULL,
-  `naam` varchar(255) NOT NULL,
+  `naam` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `leeftijd` int(255) NOT NULL,
-  `adres` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `adres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefoonnummer` int(255) NOT NULL,
   `verzekeringsnummer` int(255) NOT NULL,
-  `aandoeningen` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `aandoeningen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `patient`
 --
 
 INSERT INTO `patient` (`id`, `naam`, `leeftijd`, `adres`, `email`, `telefoonnummer`, `verzekeringsnummer`, `aandoeningen`) VALUES
-(1, 'Dinna de Waard', 17, 'Vogelkersstraat 37', 'daandata1@gmail.com', 648681485, 129856, 'Cholera'),
-(2, 'Daytonius Boone', 17, 'De brink 1660', 'daytonboone@gmail.com', 67893272, 129852, ''),
+(1, 'Dinna de Waard', 17, 'Vogelkersstraat 3', 'daandata1@gmail.com', 64868148, 12985, 'Cholera'),
 (3, 'Dylanus van der Hout', 17, 'Boomaweg 6a', 'Dylanvanderhout@gmail.com', 657119062, 132434344, ''),
 (4, 'Collin van de Laar', 17, 'heulstraat 3', 'collinvandelaar@gmail.com', 657119061, 856, 'Geen'),
-(347, 'tom', 54, 'hoistraat', 'asd@asd.com', 635620159, 654852, 'aids');
+(348, 'Marcel de Jong', 23, 'Lange Straat 11', 'marceldejong@gmail.com', 612895520, 1192, 'Stress');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `functie` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `naam` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefoonnummer` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -123,6 +138,14 @@ ALTER TABLE `patient`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexen voor tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `functie` (`functie`);
+
+--
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
@@ -136,13 +159,19 @@ ALTER TABLE `artsen`
 -- AUTO_INCREMENT voor een tabel `medicijnen`
 --
 ALTER TABLE `medicijnen`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT voor een tabel `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=348;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=349;
+
+--
+-- AUTO_INCREMENT voor een tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
