@@ -66,7 +66,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                             echo "<tr>";
                             echo "<td>" . $data["naam"] . "</td>";
                             echo "<td>" . $data["vergoed"] . "</td>";
-                            echo "<td>" . "<a href='medicijn-add.php?medicijnid=" . $data["id"] . "&patientid=" . $_GET["id"] . "'>" . "Toevoegen" ."</button>";
+                            echo "<td>" . "<a href='medicijn-add.php?id=" . $data['id'] ."'>" . "Toevoegen" ."</button>";
                             echo "</tr>";
                         }
                         ?>
@@ -75,7 +75,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div>
         </div>
     </div>
-    <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
     <script>
         $(document).ready(function() {
             $("#myInput").on("keyup", function() {

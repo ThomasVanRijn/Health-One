@@ -43,7 +43,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <div class="container">
     <div class="row ">
         <div class="col">
-            <form action="medicijn_database_wijzig.php?id=<?php echo $data['id'] ?>" method="post">
+            <form action="medicijn_database_wijzig.php?id=<?php echo $data['medicijnen_idd'] ?>" method="post">
                 <p>
                     <label for="naam">Naam</label>
                     <input type="text" class="form-control" name="naam" id="naam" value='<?php echo $data['naam']; ?>'>
@@ -76,8 +76,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
-                    <form method="post" action="medicijn_verwijder.php?id=<?php echo $data['id']; ?>">
-                        <button type="submit" name="id" value="<?php echo $_GET['id'] ?>" class="btn btn-danger">Medicijn verwijderen</button>
+                    <form method="post" action="medicijn_verwijder.php?id=<?php echo $data['medicijnen_id']; ?>">
+                        <button type="submit" name="id" value="<?php echo $_GET['medicijnen_id'] ?>" class="btn btn-danger">Medicijn verwijderen</button>
                     </form>
                 </div>
             </div>

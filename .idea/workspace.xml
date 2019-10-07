@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="b78d6132-63ad-44c7-98cc-e4fb84393a86" name="Default Changelist" comment="" />
+=======
     <list default="true" id="b78d6132-63ad-44c7-98cc-e4fb84393a86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medicijn-add.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn-add.php" afterDir="false" />
@@ -10,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/patient-gegevens.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-gegevens.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/patient-zoekpagina.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-zoekpagina.php" afterDir="false" />
     </list>
+>>>>>>> 4b9c30d5e281441baa81d8f0a0c55541c082cb47
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -81,8 +86,17 @@
       <workItem from="1569840101692" duration="15000" />
       <workItem from="1569840117879" duration="381000" />
       <workItem from="1570017783404" duration="2528000" />
+<<<<<<< HEAD
+      <workItem from="1570094107090" duration="6937000" />
+      <workItem from="1570434335918" duration="5874000" />
+=======
       <workItem from="1570094107090" duration="2942000" />
+<<<<<<< HEAD
       <workItem from="1570431602131" duration="7714000" />
+=======
+      <workItem from="1570431602131" duration="2014000" />
+>>>>>>> 4b9c30d5e281441baa81d8f0a0c55541c082cb47
+>>>>>>> 5d70dbf313a5f6111d4b4e906af7f966048d48a8
     </task>
     <servers />
   </component>

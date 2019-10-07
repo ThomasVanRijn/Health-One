@@ -58,7 +58,6 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                     </thead>
                     <tbody id="myTable">
-                    <a href="patient-gegevens.php?id=">hoi</a>
                         <?php
                         foreach($result as &$data) {
                         echo "<tr>";
