@@ -28,11 +28,11 @@ try{
             $_REQUEST['vergoed']="Ja";
         }
     // Create prepared statement
-    $sql = "INSERT INTO medicijnen (id, naam, herhaal ,vergoed) VALUES (:id, :naam, :herhaal ,:vergoed);";
+    $sql = "INSERT INTO medicijnen (medicijnen_id, naam, herhaal ,vergoed) VALUES (:medicijnen_id, :naam, :herhaal ,:vergoed);";
     $stmt = $pdo->prepare($sql);
 
     // Bind parameters to statement
-    $stmt->bindParam(':id', $_REQUEST['id']);
+    $stmt->bindParam(':medicijnen_id', $_REQUEST['medicijnen_id']);
     $stmt->bindParam(':naam', $_REQUEST['naam']);
     $stmt->bindParam(':herhaal', $_REQUEST['herhaal']);
     $stmt->bindParam(':vergoed', $_REQUEST['vergoed']);

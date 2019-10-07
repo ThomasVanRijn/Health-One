@@ -102,7 +102,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><button><a href="medicijn-toevoegen.php">Medicijn toevoegen</a></button></td>
+                            <td><button>><a href="medicijn-toevoegen.php"?id=<?php echo $data['id'] ?></button>>Medicijn toevoegen</a></button></td>
                         </tr>
                     </tbody>
                 </table>

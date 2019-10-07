@@ -57,7 +57,7 @@
                             echo "<td>" . $data["naam"] . "</td>";
                             echo "<td>" . $data["vergoed"] . "</td>";
                             echo "<td>" . $data["herhaal"] . "</td>";
-                            echo "<td>" . "<a href='medicijn-gegevens-wijzigen.php?id=" . $data['id'] . "'>" . "<button type='button' class='btn btn-primary '>" . "Medicijn gegevens wijzigen" . "</button>" . "</a>";
+                            echo "<td>" . "<a href='medicijn-gegevens-wijzigen.php?id=" . $data['medicijnen_id'] . "'>" . "<button type='button' class='btn btn-primary '>" . "Medicijn gegevens wijzigen" . "</button>" . "</a>";
                             echo "</tr>";
                         }
                         ?>

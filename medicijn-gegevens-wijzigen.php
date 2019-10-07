@@ -11,7 +11,7 @@
 </head>
 <?php
                 $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
-                $query = $db->prepare("SELECT * FROM medicijnen WHERE id = " . $_GET['id']);
+                $query = $db->prepare("SELECT * FROM medicijnen WHERE medicijnen_id = " . $_GET['id']);
 
                 $query->execute();
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -33,7 +33,7 @@
 <div class="container">
     <div class="row ">
         <div class="col">
-            <form action="medicijn_database_wijzig.php?id=<?php echo $data['id'] ?>" method="post">
+            <form action="medicijn_database_wijzig.php?id=<?php echo $data['medicijnen_idd'] ?>" method="post">
                 <p>
                     <label for="naam">Naam</label>
                     <input type="text" class="form-control" name="naam" id="naam" value='<?php echo $data['naam']; ?>'>
@@ -66,8 +66,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
-                    <form method="post" action="medicijn_verwijder.php?id=<?php echo $data['id']; ?>">
-                        <button type="submit" name="id" value="<?php echo $_GET['id'] ?>" class="btn btn-danger">Medicijn verwijderen</button>
+                    <form method="post" action="medicijn_verwijder.php?id=<?php echo $data['medicijnen_id']; ?>">
+                        <button type="submit" name="id" value="<?php echo $_GET['medicijnen_id'] ?>" class="btn btn-danger">Medicijn verwijderen</button>
                     </form>
                 </div>
             </div>

@@ -56,7 +56,7 @@
                             echo "<tr>";
                             echo "<td>" . $data["naam"] . "</td>";
                             echo "<td>" . $data["vergoed"] . "</td>";
-                            echo "<td>" . "<a href='medicijn-add.php?id=" . $data["id"] . "'>" . "Toevoegen" ."</button>";
+                            echo "<td>" . "<a href='medicijn-add.php?medicijnen_id2=" . $data["medicijnen_id"] . "&id=" . $data['id'] ."'>" . "Toevoegen" ."</button>";
                             echo "</tr>";
                         }
                         ?>
