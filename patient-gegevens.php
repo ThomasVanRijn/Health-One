@@ -86,7 +86,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                             </td>
                         </tr>
                         <tr>
-                            <td><button><a href="medicijn-toevoegen.php">Medicijn toevoegen</a></button></td>
+                            <td><button><a href="medicijn-toevoegen.php>">Recept uitschrijven</a></button></td>
                         </tr>
                     </tbody>
                 </table>

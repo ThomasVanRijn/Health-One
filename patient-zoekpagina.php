@@ -58,10 +58,11 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                     </thead>
                     <tbody id="myTable">
+                    <a href="patient-gegevens.php?id=">hoi</a>
                         <?php
                         foreach($result as &$data) {
                         echo "<tr>";
-                            echo "<td>"  . "<a href='patient-gegevens.php?id=" . $data['id'] . "'>" . $data["naam"]  . "</td>";
+                            echo "<td>"  . "<a href='patient-gegevens.php?id=" . $data['id'] . "'>" . $data["naam"]  . "</a></td>";
                             echo "<td>" . $data["leeftijd"] . "</td>";
                             echo "<td>" . $data["email"] . "</td>";
                             echo "</tr>";
