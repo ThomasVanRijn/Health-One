@@ -32,7 +32,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <div class="jumbotron text-center">
-    <button onclick="darkxlight()"> Dark/Light</button>
+  <button class="buttonSwitch">Dark/Light</button>
     <h1>Health One</h1>
     <p>Zoek de arts die u wilt beheren</p>
 

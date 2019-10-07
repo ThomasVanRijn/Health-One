@@ -22,10 +22,10 @@ try{
 // Attempt insert query execution
 try{
     // Create prepared statement
-    $stmt = $pdo->prepare("UPDATE medicijnen SET naam = :naam, herhaal = :herhaal, vergoed = :vergoed WHERE medicijnen_id = :medicijnen_id");
+    $stmt = $pdo->prepare("UPDATE medicijnen SET naam = :naam, herhaal = :herhaal, vergoed = :vergoed WHERE id = :id");
  
     // Bind parameters to statement
-    $stmt->bindParam('medicijnen_id', $_GET['medicijnen_id']);
+    $stmt->bindParam('id', $_GET['id']);
     $stmt->bindParam('naam', $_POST['naam']);
     $stmt->bindParam('herhaal', $_POST['herhaal']);
     $stmt->bindParam('vergoed', $_POST['vergoed']);

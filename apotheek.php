@@ -24,7 +24,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body id="darkxlight">
 
 <div class="jumbotron text-center">
-    <button onclick="darkxlight()"> Dark/Light</button>
+    <button class="buttonSwitch"> Dark/Light</button>
     <h1>Health One</h1>
     <p>Zoek patient</p>
 

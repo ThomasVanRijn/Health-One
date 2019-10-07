@@ -31,7 +31,7 @@ foreach ($result as &$data) {
 ?>
 <body>
 <div class="jumbotron text-center">
-    <button onclick="darkxlight()"> Dark/Light</button>
+  <button class="buttonSwitch">Dark/Light</button>
     <h1>Health One</h1>
     <p>Arts wijzigen</p>
 

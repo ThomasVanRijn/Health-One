@@ -27,7 +27,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body id="darkxlight">
 
     <div class="jumbotron text-center">
-        <button onclick="darkxlight()"> Dark/Light</button>
+      <button class="buttonSwitch">Dark/Light</button>
     <h1>Welkom, <?php echo htmlspecialchars($_SESSION["naam"]); ?>!</h1>
         <h1>Health One</h1>
         <p>Kies je afdeling</p>

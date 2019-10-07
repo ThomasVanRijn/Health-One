@@ -20,10 +20,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="darkmode.js"></script>
 </head>
 
 <body>
     <div class="jumbotron text-center">
+        <button class="buttonSwitch">Dark/Light</button>
         <h1>Health One</h1>
         <p>Informatie patient</p>
 

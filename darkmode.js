@@ -8,23 +8,30 @@ let toggle = 0;
 
 
 $(document).ready(function(){
-  $("button").click(function(){
+  $(".buttonSwitch").click(function(){
     if (toggle == 0){
       $("body").css("background-color", "#212121");
       $("p, h2, h1,label, th, td").css("color", "white");
       $(".jumbotron").css("background-color", "#424242");
-      $(".btn").css("background-color", "#065900");
+      $(".btn, .jumbotron, p, h2, h1,label, th, td, body, .modal.fade, .modal-dialog").css("transition", "0.4s");
+      $(".modal-content").css("background-color", "#212121");
+      $(".modal-content").css("color", "white");
       toggle = 1;
     }
     else if (toggle == 1){
       $("body").css("background-color", "white");
       $("p, h2, h1,label, th, td").css("color", "black");
       $(".jumbotron").css("background-color", "#e9ecef");
+      $(".btn, .jumbotron, p, h2, h1,label, th, td, body, .modal.fade, .modal-dialog").css("transition", "0.4s");
+      $(".modal.fade .modal-dialogn").css("background-color", "#fff");
+
       toggle = 0;
     }
 
   });
 });
+
+
 
 
 
