@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b78d6132-63ad-44c7-98cc-e4fb84393a86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/darkmode.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mijngegevens.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reset-password.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arts-gegevens-wijzigen.php" beforeDir="false" afterPath="$PROJECT_DIR$/Arts-gegevens-wijzigen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/healthone.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Database/healthone.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apotheek.php" beforeDir="false" afterPath="$PROJECT_DIR$/apotheek.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arts-beheren-pagina.php" beforeDir="false" afterPath="$PROJECT_DIR$/arts-beheren-pagina.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arts-zoekpagina.php" beforeDir="false" afterPath="$PROJECT_DIR$/arts-zoekpagina.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arts_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/arts_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arts_verwijder.php" beforeDir="false" afterPath="$PROJECT_DIR$/arts_verwijder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medicijn-gegevens-wijzigen.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn-gegevens-wijzigen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medicijn-toevoegen.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn-toevoegen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medicijn_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medicijn_add_database.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn_add_database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medicijn_database_wijzig.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijn_database_wijzig.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medicijnen-lijst.php" beforeDir="false" afterPath="$PROJECT_DIR$/medicijnen-lijst.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-gegevens-verzekeraar.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-gegevens-verzekeraar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-gegevens-wijzigen.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-gegevens-wijzigen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-gegevens.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-gegevens.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-lijst.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-lijst.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient-zoekpagina.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient-zoekpagina.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_database_wijzig.php" beforeDir="false" afterPath="$PROJECT_DIR$/patient_database_wijzig.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/verzekering.php" beforeDir="false" afterPath="$PROJECT_DIR$/verzekering.php" afterDir="false" />
-    </list>
+    <list default="true" id="b78d6132-63ad-44c7-98cc-e4fb84393a86" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +75,7 @@
       <workItem from="1569840117879" duration="381000" />
       <workItem from="1570017783404" duration="2528000" />
       <workItem from="1570094107090" duration="6937000" />
-      <workItem from="1570434335918" duration="5548000" />
+      <workItem from="1570434335918" duration="5874000" />
     </task>
     <servers />
   </component>
