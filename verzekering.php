@@ -26,6 +26,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
 
 <body>
     <div class="jumbotron text-center">
+        <h1>Welkom, <?php echo htmlspecialchars($_SESSION["naam"]); ?>!</h1>
         <h1>Health One</h1>
         <p>Kies</p>
     </div>
@@ -39,6 +40,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
             </div>
             <div class="col-lg-4">
                 <a href="patient-lijst.php"><button class="btn btn-block">PATIENTEN BEHEREN</button></a>
+            </div>
+            <div class="col-lg-4">
+                <a href="mijngegevens.php"><button class="btn btn-block">Gegevens beheren</button></a>
             </div>
         </div>
     </div>

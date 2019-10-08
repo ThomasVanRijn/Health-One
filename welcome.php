@@ -8,7 +8,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
+$site = "";
 
+if ($_SESSION["functie"] == 'Arts'){
+    $site = 'patient-zoekpagina';
+}
+elseif ($_SESSION["functie"] == 'apotheker'){
+    $site = 'apotheek';
+}
+else{
+    $site = 'verzekering';
+}
 ?>
  
  <!DOCTYPE html>
@@ -35,7 +45,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="row text-center">
         <h1>Hoi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?>
         </b>Welkom op onze site u bent een <?php echo htmlspecialchars($_SESSION["functie"]); ?> en kunt niet op de pagina die u net bezocht. Klik op de volgende link om naar de 
-    pagina te gaan waar u wel recht op heeft: <a href="<?php echo htmlspecialchars($_SESSION["functie"]); ?>.php">Link</a></h1><br>
+    pagina te gaan waar u wel recht op heeft: <a href="<?php echo $site; ?>.php">Link</a></h1><br>
     </p>
     </div>
     </div>
