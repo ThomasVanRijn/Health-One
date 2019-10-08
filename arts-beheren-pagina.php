@@ -27,7 +27,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
 <?php
 include("database.php");
 $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
-$query = $db->prepare("SELECT * FROM artsen");
+$query = $db->prepare("SELECT * FROM users WHERE functie = 'artsen'");
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -75,7 +75,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 </tbody>
             </table>
-            <a href="arts_add.html"><button type="button" class="btn btn-success">Arts toevoegen</button></a>
+            <a href="register.php"><button type="button" class="btn btn-success">Arts toevoegen</button></a>
         </div>
     </div>
 </div>

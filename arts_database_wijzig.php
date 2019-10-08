@@ -12,7 +12,7 @@ try{
 // Attempt insert query execution
 try{
     // Create prepared statement
-    $stmt = $pdo->prepare("UPDATE artsen SET naam = :naam, adres = :adres, email = :email, telefoonnummer = :telefoonnummer WHERE id = :id");
+    $stmt = $pdo->prepare("UPDATE users SET naam = :naam, adres = :adres, email = :email, telefoonnummer = :telefoonnummer WHERE id = :id");
 
     // Bind parameters to statement
     $stmt->bindParam('id', $_GET['id']);

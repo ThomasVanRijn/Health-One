@@ -24,7 +24,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
 
 <?php
 $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
-$query = $db->prepare("SELECT * FROM artsen WHERE id = " . $_GET['id']);
+$query = $db->prepare("SELECT * FROM users WHERE id = " . $_GET['id']);
 
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);

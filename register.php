@@ -250,19 +250,8 @@ if($functie == "Verzekering"){
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
                 // Redirect to login page
-                $sql = "INSERT INTO $functie (naam, adres, email, telefoonnummer) VALUES (:naam, :adres, :email, :telefoonnummer)";
-
-                if ($stmt = $pdo->prepare($sql)) {
-                    // Bind variables to the prepared statement as parameters
-                    $stmt->bindParam(":naam", $param_naam, PDO::PARAM_STR);
-                    $stmt->bindParam(":adres", $param_adres, PDO::PARAM_STR);
-                    $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
-                    $stmt->bindParam(":telefoonnummer", $param_telefoonnummer, PDO::PARAM_STR);
-                    
-                }
-                if ($stmt->execute()) {
                     header("location: login.php");
-                }
+
             } else {
                 echo "Something went wrong. Please try again later.";
             }
@@ -297,11 +286,11 @@ if($functie == "Verzekering"){
     <div class="jumbotron text-center">
 
         <h1>Health One</h1>
-        <p>Registreren</p>
+        <p>Een gebruiker toevoegen</p>
     </div>
     <div class="container">
-        <h2>Registreren</h2>
-        <p>Maak hieronder een account aan</p>
+        <h2>Een gebruiker toevoegen</h2>
+        <p>Hier kunt u een gebruiker zoals en arts toevoegen aan het systeem.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Gebruikersnaam</label>

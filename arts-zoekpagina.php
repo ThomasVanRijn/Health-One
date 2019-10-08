@@ -24,7 +24,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
 <body id="arts">
 <?php
 include ("database.php");
-$query = $db->prepare("SELECT * FROM artsen");
+$query = $db->prepare("SELECT * FROM users WHERE functie = 'artsen'");
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
