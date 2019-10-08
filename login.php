@@ -76,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
 
                             if ($functie == "Arts"){
-                                header("location: patient-zoekpagina.php");
+                                header("location: arts.php");
                             }
                             elseif ($functie == "verzekering"){
                                 header("location: verzekering.php");

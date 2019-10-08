@@ -33,9 +33,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-4">
-                <a href="arts-beheren-pagina.php"><button class="btn btn-block">ARTS <br> BEHEREN</button></a>
-            </div>
-            <div class="col-lg-4">
                 <a href="medicijnen-lijst.php"><button class="btn btn-block">MEDICIJNEN BEHEREN</button></a>
             </div>
             <div class="col-lg-4">
@@ -43,6 +40,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
             </div>
             <div class="col-lg-4">
                 <a href="mijngegevens.php"><button class="btn btn-block">Gegevens beheren</button></a>
+            </div>
+            <div class="col-lg-4">
+                <a href="gebruikers-beheren.php"><button class="btn btn-block">Gebruikers beheren</button></a>
             </div>
         </div>
     </div>

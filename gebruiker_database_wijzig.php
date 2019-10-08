@@ -11,21 +11,21 @@ try{
 
 // Attempt insert query execution
 try{
-
     // Create prepared statement
-    $sql = "INSERT INTO artsen (naam, adres ,email, telefoonnummer) VALUES (:naam, :adres ,:email, :telefoonnummer);";
-    $stmt = $pdo->prepare($sql);
+    $stmt = $pdo->prepare("UPDATE users SET naam = :naam, adres = :adres, email = :email, telefoonnummer = :telefoonnummer WHERE id = :id");
 
     // Bind parameters to statement
+    $stmt->bindParam('id', $_GET['id']);
+    $stmt->bindParam('naam', $_POST['naam']);
+    $stmt->bindParam('adres', $_POST['adres']);
+    $stmt->bindParam('email', $_POST['email']);
+    $stmt->bindParam('telefoonnummer', $_POST['telefoonnummer']);
 
-    $stmt->bindParam(':naam', $_REQUEST['naam']);
-    $stmt->bindParam(':adres', $_REQUEST['adres']);
-    $stmt->bindParam(':email', $_REQUEST['email']);
-    $stmt->bindParam(':telefoonnummer', $_REQUEST['telefoonnummer']);
 
     // Execute the prepared statement
     $stmt->execute();
-    echo "<META HTTP-EQUIV ='Refresh' Content ='0; URL =arts-beheren-pagina.php'>";
+    echo "<META HTTP-EQUIV ='Refresh' Content ='0; URL =gebruikers-beheren.php'>";
+
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }

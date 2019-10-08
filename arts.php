@@ -3,7 +3,7 @@
 session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["functie"] !== "Arts") {
     header("location: login.php");
     exit;
 }
@@ -24,40 +24,30 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
-<body id="darkxlight">
-
+<body>
     <div class="jumbotron text-center">
         <h1>Welkom, <?php echo htmlspecialchars($_SESSION["naam"]); ?>!</h1>
         <h1>Health One</h1>
-        <p>Kies je afdeling</p>
+        <p>Kies</p>
     </div>
-
-    <div class="container fluid">
+    <div class="container">
         <div class="row text-center">
             <div class="col-lg-4">
-                <a style="text-decoration: none" href="arts-zoekpagina.php"><button class="btn btn-block">ARTS</button></a>
+                <a href="patient-zoekpagina.php"><button class="btn btn-block">Patiënten inzien</button></a>
             </div>
             <div class="col-lg-4">
-                <a style="text-decoration: none" href="patient-zoekpagina.php"><button class="btn btn-block">APOTHEEK</button></a>
+                <a href="mijngegevens.php"><button class="btn btn-block">Mijn gegevens</button></a>
             </div>
             <div class="col-lg-4">
-                <a style="text-decoration: none" href="verzekering.php"><button class="btn btn-block">VERZEKERING</button></a>
-            </div>
-            <div class="col-lg-4">
-                <a style="text-decoration: none" href="logout.php"><button class="btn btn-block">UITLOGGEN</button></a>
-            </div>
-            <div class="col-lg-4">
-                <a style="text-decoration: none" href="mijngegevens.php"><button class="btn btn-block">MIJN GEGEVENS</button></a>
+                <a href="logout.php"><button class="btn btn-block">Uitloggen</button></a>
             </div>
         </div>
     </div>
-
-    </div>
-
-
 </body>
+
+
+
 
 <link rel="stylesheet" href="css/darkmode.css">
 <script src="darkmode.js"></script>
-
 </html>

@@ -98,7 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </div>
 <div class="container">
     <h2>Mijn gegevens</h2>
-    <p>Hier kunt u uw gegevens bekijken en inzien.</p>
+    <p>Hier kunt u uw gegevens wijzigen en inzien.</p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
             <label>Gebruikersnaam:</label>
@@ -131,7 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <span class="help-block"><?php echo $confirm_password_err; ?></span>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-success" value="Opslaan">
+            <input type="submit" class="btn btn-success" disabled value="Opslaan">
         </div>
     </form>
 </div>

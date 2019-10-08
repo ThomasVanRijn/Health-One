@@ -11,7 +11,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 $site = "";
 
 if ($_SESSION["functie"] == 'Arts'){
-    $site = 'patient-zoekpagina';
+    $site = 'arts';
 }
 elseif ($_SESSION["functie"] == 'apotheker'){
     $site = 'apotheek';

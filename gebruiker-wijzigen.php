@@ -29,13 +29,22 @@ $query = $db->prepare("SELECT * FROM users WHERE id = " . $_GET['id']);
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as &$data) {
+    if($data['functie'] == "artsen"){
+        $data['functie'] = "Arts";
+    }
+    elseif($data['functie'] == "apotheker"){
+        $data['functie'] = "Apotheker";
+    }
+    else{
+        $data['functie'] = "Verzekeringsmedewerker";
+    }
 }
 ?>
 <body>
 
 <div class="jumbotron text-center">
     <h1>Health One</h1>
-    <p>Arts wijzigen</p>
+    <p>Gebruikers gegevens wijzigen</p>
 
     <div class="container">
         <div class="progress">
@@ -47,7 +56,7 @@ foreach ($result as &$data) {
 <div class="container">
     <div class="row ">
         <div class="col">
-            <form action="arts_database_wijzig.php?id=<?php echo $data['id'] ?>" method="post">
+            <form action="gebruiker_database_wijzig.php?id=<?php echo $data['id'] ?>" method="post">
                 <p>
                     <label for="naam">Naam</label>
                     <input type="text" class="form-control" name="naam" id="naam" value='<?php echo $data['naam']; ?>'>
@@ -63,6 +72,10 @@ foreach ($result as &$data) {
                 <p>
                     <label for="vergoed">Telefoonnummer</label>
                     <input type="text" class="form-control" name="telefoonnummer" id="telefoonnummer" value='<?php echo $data['telefoonnummer'] ?>'>
+                </p>
+                <p>
+                    <label for="vergoed">Functie</label>
+                    <input type="text" class="form-control" name="telefoonnummer" id="telefoonnummer" value='<?php echo $data['functie'] ?>'readonly>
                 </p>
 
                 <input type="submit" value="Wijzig" type="button" class="btn btn-success btn-block"><br>
@@ -80,12 +93,12 @@ foreach ($result as &$data) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    Weet u zeker dat u <?php echo $data['naam']; ?> als arts wilt verwijderen?
+                    Weet u zeker dat u <?php echo $data['naam']; ?> als gebruiker wilt verwijderen?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
-                    <form method="post" action="arts_verwijder.php?id=<?php echo $data['id']; ?>">
-                        <button type="submit" name="id" value="<?php echo $_GET['id'] ?>" class="btn btn-danger">Arts verwijderen</button>
+                    <form method="post" action="gebruiker_verwijder.php?id=<?php echo $data['id']; ?>">
+                        <button type="submit" name="id" value="<?php echo $_GET['id'] ?>" class="btn btn-danger">Gebruiker verwijderen?</button>
                     </form>
                 </div>
             </div>
