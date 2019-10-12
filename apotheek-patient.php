@@ -23,16 +23,18 @@
 </div>
 
 <?php
-
-$db = new PDO("mysql:host=localhost;dbname=healthone", "root", "");
-$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-$queryRecept = $db->prepare("SELECT naam, hoeveelheid, datum FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where kaartnummer = :id ORDER BY datum DESC");
-$queryRecept->bindParam("id", $id);
-$queryName = $db->prepare("SELECT naam FROM patient where id = :id ");
-$queryName->bindParam("id", $id);
-$queryName->execute();
-$resultName = $queryName->fetchAll(PDO::FETCH_ASSOC);
-
+try {
+    $db = new PDO("mysql:host=localhost;dbname=healthone", "root", "");
+    $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+    $queryRecept = $db->prepare("SELECT naam, medicijnID, hoeveelheid, datum FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where kaartnummer = :id AND afgehandeld = FALSE  ORDER BY datum DESC");
+    $queryRecept->bindParam("id", $id);
+    $queryName = $db->prepare("SELECT naam, id FROM patient where id = :id ");
+    $queryName->bindParam("id", $id);
+    $queryName->execute();
+    $resultName = $queryName->fetchAll(PDO::FETCH_ASSOC);
+}catch (PDOException $e){
+    echo "$e->errorInfo";
+}
 ?>
 <div class="container">
     <div class="row">
@@ -54,7 +56,8 @@ $resultName = $queryName->fetchAll(PDO::FETCH_ASSOC);
                 if ($queryRecept->rowCount() > 0) {
                     $resultRecept = $queryRecept->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($resultRecept as &$data) {
-                        echo "<tr>";
+                        echo "<tr class=\"clickable\"
+                    onclick=\"window.location='apotheek-recept.php?id=" . $resultName[0]['id'] . "&mcid=" . $data['medicijnID'] . "&datum=" . $data['datum'] . "'\"\">";
                         echo "<td>" . $data['naam'] . "</td>";
                         echo "<td>" . $data['hoeveelheid'] . "</td>";
                         echo "<td>" . $data['datum'] . "</td>";
