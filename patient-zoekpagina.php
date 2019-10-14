@@ -3,7 +3,7 @@
 session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["functie"] !== "Arts") {
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
@@ -61,12 +61,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                     </thead>
                     <tbody id="myTable">
                         <?php
-                        foreach ($result as &$data) {
-                            echo "<tr>";
-                            echo "<td>"  . "<a href='patient-gegevens.php?id=" . $data['id'] . "'>" . $data["naam"]  . "</a></td>";
-                            echo "<td>" . $data["leeftijd"] . "</td>";
-                            echo "<td>" . $data["email"] . "</td>";
-                            echo "</tr>";
+                        $functie = $_SESSION["functie"];
+                        if ($functie == "apotheker") {
+                            foreach ($result as &$data) {
+                                echo "<tr>";
+                                echo "<td>" . "<a href='patient-gegevensApotheker.php?id=" . $data['id'] . "'>" . $data["naam"] . "</a></td>";
+                                echo "<td>" . $data["leeftijd"] . "</td>";
+                                echo "<td>" . $data["email"] . "</td>";
+                                echo "</tr>";
+                            }
+                        }
+                        elseif ($functie == "Arts") {
+                            foreach ($result as &$data) {
+                                echo "<tr>";
+                                echo "<td>" . "<a href='patient-gegevens.php?id=" . $data['id'] . "'>" . $data["naam"] . "</a></td>";
+                                echo "<td>" . $data["leeftijd"] . "</td>";
+                                echo "<td>" . $data["email"] . "</td>";
+                                echo "</tr>";
+                            }
                         }
                         ?>
                     </tbody>

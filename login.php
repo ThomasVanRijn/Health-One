@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Vul alsutblieft uw gebruikersnaam in";
+        $username_err = "Vul alstublieft uw gebruikersnaam in";
     } else{
         $username = trim($_POST["username"]);
     }
@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                         } else{
                             // Display an error message if password is not valid
-                            $password_err = "Het wachtwoord komt niet overeen met de gerbuikersnaam";
+                            $password_err = "Het wachtwoord komt niet overeen met de gebruikersnaam";
                         }
                     }
                 } else{
