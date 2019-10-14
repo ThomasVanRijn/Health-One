@@ -82,7 +82,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                         </tr>
                     </tbody>
                 </table>
-                <button><a href="recept-uitschrijven.php">Recept uitschrijven</a></button>
+                <button><a href="recept-uitschrijven.php?id=<?php echo $data["id"]; ?>">Recept uitschrijven</a></button>
             </div>
         </div>
     </div>

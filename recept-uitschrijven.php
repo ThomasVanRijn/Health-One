@@ -23,9 +23,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
 <?php
 $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
 $query = $db->prepare("SELECT * FROM medicijnen");
-
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_POST['verzenden'])) {
+    $patient_id = $_GET['id'];
+    $medicijn_id = filter_input(INPUT_POST, "medicijn", FILTER_SANITIZE_STRING);
+    $herhaal = filter_input(INPUT_POST, "herhaal", FILTER_SANITIZE_STRING);
+    $dosering = filter_input(INPUT_POST, "dosering", FILTER_SANITIZE_STRING);
+    $omschrijving = filter_input(INPUT_POST, "omschrijving", FILTER_SANITIZE_STRING);
+    $query = $db->prepare("INSERT INTO recepten(patient_id, medicijn_id, herhaal, dosering, omschrijving)
+                           VALUES ('$patient_id','$medicijn_id','$herhaal', '$dosering', '$omschrijving')");
+    if ($query->execute()) {
+        header("Location: patient-gegevens.php?id=" . $_GET['id']);
+    } else {
+        echo "Er is een fout opgetreden";
+    }
+}
 ?>
 <div class="jumbotron text-center">
     <h1>Health One</h1>
@@ -36,31 +50,33 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
+
 <div class="container">
-    <form action="">
+    <form action="" method="post">
         <div class="form-group">
             <label>medicijn:</label><br>
-            <select class="form-control" name="medicijn" id="">
+            <select class="form-control" name="medicijn">
                 <?php
                 foreach ($result as &$data) {
-                    echo "<option>" . $data['naam'] . "</option>";
+                    echo "<option value='" . $data['id'] . "'>" . $data['naam'] . "</option>";
                 }
                 ?>
             </select>
             <br>
             <label>herhaalt:</label><br>
-            <select class="form-control" name="herhaal" id="">
-                <option>ja</option>
-                <option>nee</option>
+            <select class="form-control" name="herhaal" required>
+                <option value="ja">ja</option>
+                <option value="nee">nee</option>
             </select>
             <br>
             <label>dosering:</label><br>
-            <input class="form-control" type="number">
+            <input class="form-control" type="number" name="dosering" required>
             <br>
             <label>omschrijving:</label><br>
-            <textarea class="form-control" name="omschrijving"></textarea>
+            <textarea class="form-control" name="omschrijving" required></textarea>
         </div>
-        <input class="" type="submit">
+        <input type="submit" name="verzenden">
+
     </form>
 </div>
 
