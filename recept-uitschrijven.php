@@ -35,7 +35,7 @@ if (isset($_POST['verzenden'])) {
     $query = $db->prepare("INSERT INTO recepten(patient_id, medicijn_id, herhaal, dosering, omschrijving)
                            VALUES ('$patient_id','$medicijn_id','$herhaal', '$dosering', '$omschrijving')");
     if ($query->execute()) {
-        header("Location: patient-gegevens.php?id=" . $_GET['id']);
+        header("Location: patient-gegevens.php?id=" . $patient_id);
     } else {
         echo "Er is een fout opgetreden";
     }

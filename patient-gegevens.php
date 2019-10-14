@@ -64,25 +64,39 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                 </table>
             </div>
         </div>
+        <a href="recept-uitschrijven.php?id=<?php echo $data["id"]; ?>">
+            <button class="btn btn-success">Recept uitschrijven</button>
+        </a>
         <div class="row">
             <div class="col">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Naam</th>
-                            <th>Aandoening</th>
+                            <th>Medicijn</th>
+                            <th>herhaal</th>
+                            <th>dosering</th>
+                            <th>omschrijving</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Lorem Ipsum</td>
-                            <td><?php echo $data['aandoeningen']; ?></td>
-                        </tr>
+                        <?php
+                        $query = $db->prepare("SELECT * FROM recepten WHERE patient_id = " . $_GET['id']);
+
+                        $query->execute();
+                        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($result as &$data) {
+                            echo "<tr>";
+                            echo "<td>" . $data['id'] . "</td>";
+                            echo "<td>" . $data['medicijn_id'] . "</td>";
+                            echo "<td>" . $data['herhaal'] . "</td>";
+                            echo "<td>" . $data['dosering'] . "</td>";
+                            echo "<td>" . $data['omschrijving'] . "</td>";
+                            echo "</tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
-                <button><a href="recept-uitschrijven.php?id=<?php echo $data["id"]; ?>">Recept uitschrijven</a></button>
             </div>
         </div>
     </div>
