@@ -65,8 +65,8 @@ if (isset($_POST['verzenden'])) {
             <br>
             <label>herhaalt:</label><br>
             <select class="form-control" name="herhaal" required>
-                <option value="ja">ja</option>
-                <option value="nee">nee</option>
+                <option value="ja">Ja</option>
+                <option value="nee">Nee</option>
             </select>
             <br>
             <label>dosering:</label><br>

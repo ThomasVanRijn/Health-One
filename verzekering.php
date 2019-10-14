@@ -44,9 +44,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
             <div class="col-lg-4">
                 <a href="gebruikers-beheren.php"><button class="btn btn-block">Gebruikers beheren</button></a>
             </div>
+            <div class="col-lg-4">
+                <a href="logout.php"><button class="btn btn-block">Uitloggen</button></a>
+            </div>
         </div>
     </div>
-    <a href="logout.php"><button class="btn btn-danger">Uitloggen</button></a>
 </body>
 
 

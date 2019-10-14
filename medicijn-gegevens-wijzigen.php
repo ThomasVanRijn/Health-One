@@ -49,11 +49,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                     <input type="text" class="form-control" name="naam" id="naam" value='<?php echo $data['naam']; ?>'>
                 </p>
                 <p>
-                    <label for="Herhaal">Herhaal</label>
-                    <input type="text" name="herhaal" class="form-control" id="herhaal" value='<?php echo $data['herhaal'] ?>'>
-                </p>
-                <p>
-                    <label for="vergoed">Adres</label>
+                    <label for="vergoed">Vergoed</label>
                     <input type="text" class="form-control" name="vergoed" id="vergoed" value='<?php echo $data['vergoed'] ?>'>
                 </p>
             

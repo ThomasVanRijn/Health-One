@@ -19,28 +19,14 @@ $new_password_err = $confirm_password_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate new password
-    if(empty(trim($_POST["new_password"]))){
-        $new_password_err = "Please enter the new password.";
-    } elseif(strlen(trim($_POST["new_password"])) < 6){
-        $new_password_err = "Password must have atleast 6 characters.";
-    } else{
-        $new_password = trim($_POST["new_password"]);
-    }
-
-    // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm the password.";
-    } else{
-        $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($new_password_err) && ($new_password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
-        }
-    }
+    $id = $_SESSION["id"];
 
     // Check input errors before updating the database
     if(empty($new_password_err) && empty($confirm_password_err)){
+        $id = $_SESSION["id"];
+
         // Prepare an update statement
-        $sql = "UPDATE users SET username = :username, naam = :naam, adres = :adres, email = :email, telefoonnummer= :telefoonnummer WHERE id = :id";
+        $sql = "UPDATE users SET username = :username, naam = :naam, adres = :adres, email = :email, telefoonnummer= :telefoonnummer WHERE id = 21";
 
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -49,10 +35,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bindParam(":adres", $param_naam, PDO::PARAM_INT);
             $stmt->bindParam(":email", $param_naam, PDO::PARAM_INT);
             $stmt->bindParam(":telefoonnummer", $param_naam, PDO::PARAM_INT);
-            $stmt->bindParam(":id", $param_id, PDO::PARAM_INT);
+        
 
             // Set parameters
-            $param_id = $_SESSION["id"];
+            $id = $_SESSION["id"];
 
             // Attempt to execute the prepared statement
             if($stmt->execute()){

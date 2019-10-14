@@ -56,7 +56,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <tr>
                             <th>Naam</th>
                             <th>Vergoed</th>
-                            <th>Herhaal</th>
                             <th>Wijzig</th>
                         </tr>
                     </thead>
@@ -66,7 +65,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                             echo "<tr>";
                             echo "<td>" . $data["naam"] . "</td>";
                             echo "<td>" . $data["vergoed"] . "</td>";
-                            echo "<td>" . $data["herhaal"] . "</td>";
                             echo "<td>" . "<a href='medicijn-gegevens-wijzigen.php?id=" . $data['id'] . "'>" . "<button type='button' class='btn btn-success'>" . "Medicijn gegevens wijzigen" . "</button>" . "</a>";
                             echo "</tr>";
                         }

@@ -17,11 +17,6 @@ try{
 }
 
 try{
-    if(!isset($_POST['herhaal'])) {
-        $_REQUEST['herhaal']="Nee";
-    } else {
-        $_REQUEST['herhaal']="Ja";
-    }
 
     if(!isset($_POST['vergoed'])) {
         $_REQUEST['vergoed']="Nee";
@@ -29,12 +24,11 @@ try{
         $_REQUEST['vergoed']="Ja";
     }
 
-    $sql = "INSERT INTO medicijnen (id, naam, herhaal ,vergoed) VALUES (:id, :naam, :herhaal ,:vergoed);";
+    $sql = "INSERT INTO medicijnen (id, naam, vergoed) VALUES (:id, :naam,:vergoed);";
     $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':id', $_REQUEST['id']);
     $stmt->bindParam(':naam', $_REQUEST['naam']);
-    $stmt->bindParam(':herhaal', $_REQUEST['herhaal']);
     $stmt->bindParam(':vergoed', $_REQUEST['vergoed']);
 
     // Execute the prepared statement
