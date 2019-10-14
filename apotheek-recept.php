@@ -28,7 +28,7 @@ try {
     $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
     $mcid = filter_input(INPUT_GET, 'mcid', FILTER_SANITIZE_NUMBER_INT);
     $datum = filter_input(INPUT_GET, 'datum', FILTER_SANITIZE_STRING);
-    $queryRecept = $db->prepare("SELECT naam, medicijnID, hoeveelheid, datum FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where kaartnummer = :id AND medicijnID = :mcid AND datum = :datum");
+    $queryRecept = $db->prepare("SELECT naam, medicijnID, hoeveelheid, datum, herhaalrecept FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where kaartnummer = :id AND medicijnID = :mcid AND datum = :datum");
     $queryRecept->bindParam("id", $id);
     $queryRecept->bindParam("mcid", $mcid);
     $queryRecept->bindParam("datum", $datum);
@@ -38,7 +38,7 @@ try {
     $queryName->execute();
     $resultName = $queryName->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    echo "$e->errorInfo";
+    echo "Database not connected";
 }
 ?>
 <div class="container">
@@ -48,15 +48,16 @@ try {
                 <thead>
                 <tr>
                     <th colspan="<?php if (!isset($_POST['aanpassen'])) {
-                        echo '5';
+                        echo '6';
                     } else {
-                        echo '4';
+                        echo '5';
                     } ?>"><?php echo $resultName[0]['naam']; ?></th>
                 </tr>
                 <tr>
                     <th>medicijn</th>
                     <th>hoeveelheid</th>
                     <th>datum</th>
+                    <th>herhaalrecept</th>
                     <th>aanpassen</th>
                     <?php
                     if (!isset($_POST['aanpassen'])) {
@@ -74,6 +75,11 @@ try {
                     echo "<td>" . $data['naam'] . "</td>";
                     echo "<td>" . $data['hoeveelheid'] . "</td>";
                     echo "<td>" . $data['datum'] . "</td>";
+                    if ($data['herhaalrecept']) {
+                        echo "<td>ja</td>";
+                    } else {
+                        echo "<td>nee</td>";
+                    }
                     echo "<form method='post'>";
 
 
@@ -103,7 +109,6 @@ try {
                         foreach ($resultMedicijn as &$data) {
                             echo "<tr>";
                             if ($data['id'] == $_GET['mcid']) {
-                                echo "test";
                                 echo "<td><input type='radio' name='medicijn' value='" . $data['id'] . "' checked = 'checked'></td>";
                             } else {
                                 echo "<td><input type='radio' name='medicijn' value='" . $data['id'] . "'></td>";

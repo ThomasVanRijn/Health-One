@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 06 okt 2019 om 17:47
+-- Gegenereerd op: 14 okt 2019 om 09:28
 -- Serverversie: 10.4.6-MariaDB
 -- PHP-versie: 7.3.9
 
@@ -108,15 +108,17 @@ CREATE TABLE `recept` (
   `kaartnummer` int(5) NOT NULL,
   `medicijnID` int(5) NOT NULL,
   `hoeveelheid` varchar(10) NOT NULL,
-  `datum` date NOT NULL DEFAULT current_timestamp()
+  `datum` date NOT NULL DEFAULT current_timestamp(),
+  `herhaalrecept` tinyint(1) NOT NULL DEFAULT 0,
+  `afgehandeld` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `recept`
 --
 
-INSERT INTO `recept` (`kaartnummer`, `medicijnID`, `hoeveelheid`, `datum`) VALUES
-(347, 2, '10cc', '2019-10-06');
+INSERT INTO `recept` (`kaartnummer`, `medicijnID`, `hoeveelheid`, `datum`, `herhaalrecept`, `afgehandeld`) VALUES
+(347, 3, '15cc', '2019-10-06', 1, 0);
 
 -- --------------------------------------------------------
 
