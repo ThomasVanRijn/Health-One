@@ -28,7 +28,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
 
     <div class="container">
         <div class="progress">
-            <div class="darkmode-ignore progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:66%"></div>
+            <div class="darkmode-ignore progress-bar progress-bar-striped progress-bar-animated bg-success"
+                 style="width:66%"></div>
         </div>
     </div>
 </div>
@@ -62,35 +63,42 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                 }
                 ?>
 
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Naam</th>
-                    <th>Aandoening</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Lorem Ipsum</td>
-                    <td><?php echo $data['aandoeningen']; ?></td>
-                   <td>
-                       <form method="post" action="vergoed.php?id=<?php echo $data['id']; ?>">
-                           <button type="submit" name="id" value="<?php echo $_GET['id'] ?>" >recept afgehaald?</button>
-                       </form></td>
-                </tr>
-                </tbody>
-            </table>
 
-        </div>
-    </div>
-</div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Medicijn</th>
+                                <th>herhaal</th>
+                                <th>dosering</th>
+                                <th>omschrijving</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $query = $db->prepare("SELECT * FROM recepten WHERE patient_id = " . $_GET['id']);
+
+                            $query->execute();
+                            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($result as &$data) {
+                                echo "<tr>";
+                                echo "<td>" . $data['id'] . "</td>";
+                                echo "<td>" . $data['medicijn_id'] . "</td>";
+                                echo "<td>" . $data['herhaal'] . "</td>";
+                                echo "<td>" . $data['dosering'] . "</td>";
+                                echo "<td>" . $data['omschrijving'] . "</td>";
+                                echo "   <td>";
+                                echo "<form method='post' action='vergoed.php?id=" . $data['id'] . "'>";
+                                echo " <button type='submit' name='id' value='" . $_GET['id'] . "' >recept afgehaald?</button></form></td>";
+                                echo "</tr>";
+                            }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
 </body>
 <link rel="stylesheet" href="css/darkmode.css">
