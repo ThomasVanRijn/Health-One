@@ -39,7 +39,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                 <?php
                 $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
                 $query = $db->prepare("SELECT * FROM patient WHERE id = " . $_GET['id']);
-
                 $query->execute();
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($result as &$data) {
@@ -74,6 +73,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                             <th>herhaal</th>
                             <th>dosering</th>
                             <th>omschrijving</th>
+                            <th>Afgehaald</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,6 +88,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                             echo "<td>" . $data['herhaal'] . "</td>";
                             echo "<td>" . $data['dosering'] . "</td>";
                             echo "<td>" . $data['omschrijving'] . "</td>";
+                            if ($data['afgehaald'] == 0){
+                                echo "<td>" . "Nog niet" . "</td>";
+                            }
+                            else{
+                                echo "<td>" . "Afgehaald" . "</td>";
+                            }
                             echo "</tr>";
                         }
                         ?>

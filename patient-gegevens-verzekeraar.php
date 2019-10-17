@@ -66,26 +66,44 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                 </table>
             </div>
         </div>
+        <hr>
         <div class="row">
             <div class="col">
-                <table class="table">
-                    <thead>
+            <table class="table">
+                <thead class="thead-dark">
                         <tr>
-                            <th>Aandoening</th>
                             <th>Medicijn</th>
-                            <th>Datum</th>
+                            <th>herhaal</th>
+                            <th>dosering</th>
+                            <th>omschrijving</th>
+                            <th>Betaald</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><?php
-                                echo $data['aandoeningen'];
-                                ?></td>
-                            <td>Mecijn</td>
-                            <td>
-                                Datum
-                            </td>
-                            <td>
+                        <?php
+                        $query = $db->prepare("SELECT * FROM recepten WHERE patient_id = " . $_GET['id']);
+
+                        $query->execute();
+                        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($result as &$data) {
+                            echo "<tr>";
+                            echo "<td>" . $data['medicijn_id'] . "</td>";
+                            echo "<td>" . $data['herhaal'] . "</td>";
+                            echo "<td>" . $data['dosering'] . "</td>";
+                            echo "<td>" . $data['omschrijving'] . "</td>";
+                            echo "   <td>";
+                            if($data['betaald'] == 0){
+                            echo "<form method='post' action='betalen.php?id=" . $data['id'] . "'>";
+                            echo " <button class='btn btn-success' type='submit' name='id' value='" . $_GET['id'] . "' >Recept vergoeden</button></form></td>";
+                            }
+                            else{
+                                echo "Betaald" . "</td>";
+                            }
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
 
 
                                 <!-- Modal -->
@@ -116,7 +134,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                     </tbody>
                 </table>
                 <table>
-                    <a href="medicijn-toevoegen.php"><button class="btn btn-success btn-block">Medicijn toevoegen</button></a><br>
                     <a href="patient-gegevens-wijzigen.php?id=<?php echo $data['id'] ?>"> <button type="button" class="btn btn-success btn-block">Patiënt gegevens wijzigen</button></a><br>
                     <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">
                         Patiënt verwijderen
