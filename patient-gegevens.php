@@ -64,15 +64,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                 </table>
             </div>
         </div>
-        <a href="recept-uitschrijven.php?id=<?php echo $data["id"]; ?>">
-            <button class="btn btn-success">Recept uitschrijven</button>
-        </a>
         <div class="row">
             <div class="col">
+                <hr>
                 <table class="table">
-                    <thead>
+                <thead class="thead-dark" style="background-color: green;">
                         <tr>
-                            <th>ID</th>
                             <th>Medicijn</th>
                             <th>herhaal</th>
                             <th>dosering</th>
@@ -87,7 +84,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                         $result = $query->fetchAll(PDO::FETCH_ASSOC);
                         foreach ($result as &$data) {
                             echo "<tr>";
-                            echo "<td>" . $data['id'] . "</td>";
                             echo "<td>" . $data['medicijn_id'] . "</td>";
                             echo "<td>" . $data['herhaal'] . "</td>";
                             echo "<td>" . $data['dosering'] . "</td>";
@@ -99,6 +95,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                 </table>
             </div>
         </div>
+        <a href="recept-uitschrijven.php?id=<?php echo $data["id"]; ?>">
+            <button class="btn btn-success darkmode-ignore">Recept uitschrijven</button>
+        </a>
     </div>
 
 </body>
