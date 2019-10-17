@@ -134,7 +134,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                     </tbody>
                 </table>
                 <table>
-                    <a href="patient-gegevens-wijzigen.php?id=<?php echo $data['id'] ?>"> <button type="button" class="btn btn-success btn-block">Patiënt gegevens wijzigen</button></a><br>
+                    <?php 
+                                    $query = $db->prepare("SELECT * FROM patient WHERE id = " . $_GET['id']);
+
+                                    $query->execute();
+                                    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                                    foreach ($result as &$data) {?>
+                                    
+                    <a href="patient-gegevens-wijzigen.php?id=<?php echo $data['id']; }?>"> <button type="button" class="btn btn-success btn-block">Patiënt gegevens wijzigen</button></a><br>
                     <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">
                         Patiënt verwijderen
                     </button>
