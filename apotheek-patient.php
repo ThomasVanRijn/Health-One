@@ -24,10 +24,15 @@
 
 <?php
 try {
+    include("classes/recept.php");
     $db = new PDO("mysql:host=localhost;dbname=healthone", "root", "");
     $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
     $queryRecept = $db->prepare("SELECT naam, medicijnID, hoeveelheid, datum, herhaalrecept FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where kaartnummer = :id AND afgehandeld = FALSE  ORDER BY datum DESC");
     $queryRecept->bindParam("id", $id);
+    $queryRecept->execute();
+    $recepten = $queryRecept->fetchAll(PDO::FETCH_CLASS, "recept");
+
+
     $queryName = $db->prepare("SELECT naam, id FROM patient where id = :id ");
     $queryName->bindParam("id", $id);
     $queryName->execute();
@@ -51,24 +56,22 @@ try {
                     <th>herhaalrecept</th>
                 </tr>
                 </thead>
-                <tbody id="myTable">
+                <tbody>
                 <?php
-                $queryRecept->execute();
-                if ($queryRecept->rowCount() > 0) {
-                    $resultRecept = $queryRecept->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($resultRecept as &$data) {
-                        echo "<tr class=\"clickable\"
-                    onclick=\"window.location='apotheek-recept.php?id=" . $resultName[0]['id'] . "&mcid=" . $data['medicijnID'] . "&datum=" . $data['datum'] . "'\"\">";
-                        echo "<td>" . $data['naam'] . "</td>";
-                        echo "<td>" . $data['hoeveelheid'] . "</td>";
-                        echo "<td>" . $data['datum'] . "</td>";
-                        if ($data['herhaalrecept']) {
-                            echo "<td>ja</td>";
-                        } else {
-                            echo "<td>nee</td>";
-                        }
-                        echo "</tr>";
-                    }
+                if ($recepten) {
+                    foreach ($recepten as $recept) : ?>
+                        <tr class="clickable"
+                            onclick="window.location='apotheek-recept.php?id=<?= $resultName[0]['id'] . "&mcid=" . $recept->getMedicijnID() . "&datum=" . $recept->getDatum()->format('Y-m-d') ?>'">
+                        <td> <?= $recept->getNaam() ?></td>
+                        <td> <?= $recept->getHoeveelheid() ?> </td>
+                        <td> <?= $recept->getDatum()->format('d-m-Y') ?> </td>
+                        <?php if ($recept->getHerhaalrecept()) { ?>
+                            <td><?= "ja" ?> </td>
+                        <?php } else { ?>
+                            <td><?= "nee" ?> </td>
+                        <?php } ?>
+                        </tr>
+                    <?php endforeach;
                 } else {
                     echo "<td colspan='3'>" . "Er zijn nog geen medicijnen nodig" . "</td>";
                 }

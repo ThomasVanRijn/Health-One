@@ -24,6 +24,8 @@
 
 <?php
 try {
+    include ("classes/patient.php");
+    include ("classes/recept.php");
     $db = new PDO("mysql:host=localhost;dbname=healthone", "root", "");
     $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
     $mcid = filter_input(INPUT_GET, 'mcid', FILTER_SANITIZE_NUMBER_INT);
@@ -36,7 +38,7 @@ try {
     $queryName = $db->prepare("SELECT naam, id FROM patient where id = :id ");
     $queryName->bindParam("id", $id);
     $queryName->execute();
-    $resultName = $queryName->fetchAll(PDO::FETCH_ASSOC);
+    $naam = $queryName->fetchAll(PDO::FETCH_CLASS,"patient");
 } catch (PDOException $e) {
     echo "Database not connected";
 }
@@ -51,7 +53,7 @@ try {
                         echo '6';
                     } else {
                         echo '5';
-                    } ?>"><?php echo $resultName[0]['naam']; ?></th>
+                    } ?>"><?php echo $naam[0]->getNaam() ?></th>
                 </tr>
                 <tr>
                     <th>medicijn</th>

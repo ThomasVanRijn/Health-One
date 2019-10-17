@@ -23,9 +23,11 @@
 </div>
 
 <?php
-
-$db = new PDO("mysql:host=localhost;dbname=healthone","root", "");
+include("classes/patient.php");
+$db = new PDO("mysql:host=localhost;dbname=healthone", "root", "");
 $query = $db->prepare("SELECT id, naam, verzekeringsnummer FROM patient");
+$query->execute();
+$patienten = $query->fetchAll(PDO::FETCH_CLASS, "patient");
 
 ?>
 
@@ -48,16 +50,14 @@ $query = $db->prepare("SELECT id, naam, verzekeringsnummer FROM patient");
                 </thead>
                 <tbody id="myTable">
                 <?php
-                $query->execute();
-                if ($query->rowCount() > 0){
-                    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($result as &$data){
-                        echo "<tr class=\"clickable\"
-                    onclick=\"window.location='apotheek-patient.php?id=" . $data['id'] . "'\"\">";
-                        echo "<td>" . $data['naam'] . "</td>";
-                        echo "<td>" . $data['verzekeringsnummer'] . "</td>";
-                        echo "</tr>";
-                    }
+                if ($patienten) {
+                    foreach ($patienten as $patient) : ?>
+                        <tr class="clickable"
+                            onclick="window.location='apotheek-patient.php?id=<?= $patient->getId() ?>'">
+                            <td><?= $patient->getNaam() ?></td>
+                            <td><?= $patient->getVerzekeringsnummer() ?> </td>
+                        </tr>
+                    <?php endforeach;
                 }
                 ?>
                 </tbody>
@@ -67,10 +67,10 @@ $query = $db->prepare("SELECT id, naam, verzekeringsnummer FROM patient");
 </div>
 
 <script>
-    $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
             var value = $(this).val().toLowerCase().trim();
-            $("#myTable tr").filter(function() {
+            $("#myTable tr").filter(function () {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
