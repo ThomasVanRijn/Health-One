@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 14 okt 2019 om 17:05
+-- Gegenereerd op: 17 okt 2019 om 16:32
 -- Serverversie: 10.4.6-MariaDB
 -- PHP-versie: 7.3.9
 
@@ -87,18 +87,20 @@ CREATE TABLE `recepten` (
   `herhaal` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dosering` int(11) NOT NULL,
   `omschrijving` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `uitgeschreven` timestamp NOT NULL DEFAULT current_timestamp()
+  `uitgeschreven` timestamp NOT NULL DEFAULT current_timestamp(),
+  `betaald` tinyint(1) NOT NULL DEFAULT 0,
+  `afgehaald` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `recepten`
 --
 
-INSERT INTO `recepten` (`id`, `patient_id`, `medicijn_id`, `herhaal`, `dosering`, `omschrijving`, `uitgeschreven`) VALUES
-(75, 3, 13, 'ja', 7, '1 week elke avond', '2019-10-10 12:24:26'),
-(76, 1, 13, 'nee', 45, 'asdasdasd', '2019-10-14 06:51:17'),
-(78, 1, 13, 'ja', 542, 'rfef', '2019-10-14 14:45:37'),
-(79, 1, 16, 'ja', 11, '22', '2019-10-14 14:48:50');
+INSERT INTO `recepten` (`id`, `patient_id`, `medicijn_id`, `herhaal`, `dosering`, `omschrijving`, `uitgeschreven`, `betaald`, `afgehaald`) VALUES
+(75, 3, 13, 'ja', 7, '1 week elke avond', '2019-10-10 12:24:26', 0, 0),
+(76, 1, 13, 'nee', 45, 'asdasdasd', '2019-10-14 06:51:17', 0, 1),
+(78, 1, 13, 'ja', 542, 'rfef', '2019-10-14 14:45:37', 0, 1),
+(79, 1, 16, 'ja', 11, '22', '2019-10-14 14:48:50', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -126,9 +128,10 @@ INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `functie`, `naa
 (17, 'test', '$2y$10$uoY02OwPMblodY.IR9bV4uHBSVLzHQKmVZSYihGJSJaYQXGDIyL.y', '2019-10-07 08:51:58', 'artsen', 'test', 'test', 'test', 989021),
 (18, 'arts1', '$2y$10$4dHpPL9q7xSo/N0vVG8hhOu3jycf8DGJulcUp4zW4Kj5zlvpDs8SW', '2019-10-07 08:58:31', 'artsen', 'Piet', 'straat1', 'asd@asd.com', 2147483647),
 (20, 'apotheker', '$2y$10$Hu9rK3QNH9xbpsSPsHZuQu3V7o.IJKf1o3fqym.MlQ6i6fayiHy3W', '2019-10-14 09:25:37', 'apotheker', 'jan', 'straat 2', 'jan@gmail.com', 656984512),
-(21, '', '$2y$10$ojSeGyqz9NClfO1xg6jhQu8Q/6XdJ3M/vMu.py1bC3sgA2Ely40km', '2019-10-14 16:53:56', 'verzekering', '', '', '', 0),
-(22, 'apotheker1', '$2y$10$9Pjj8J5oI4LFGV4npq.wCeq1dn.A9.2hyQhrjN9WhUMIEskeRzpRG', '2019-10-14 17:03:51', 'apotheker', 'apo', 'apo', 'apo@apo.nl', 23213421),
-(23, 'apotje', '$2y$10$blP0WsSmiBL46kObwSLCbu2QnA7M/6Z6lO2xu4E.MpxptjmKL.XEa', '2019-10-14 17:04:24', 'apotheker', 'apotje', 'apotje', 'apotje@apo.nl', 2147483647);
+(22, 'apotheker1', '$2y$10$9Pjj8J5oI4LFGV4npq.wCeq1dn.A9.2hyQhrjN9WhUMIEskeRzpRG', '2019-10-14 17:03:51', 'apotheker', 'Bert', 'apotje', 'apo@apo.nl', 23213421),
+(23, 'apotje', '$2y$10$blP0WsSmiBL46kObwSLCbu2QnA7M/6Z6lO2xu4E.MpxptjmKL.XEa', '2019-10-14 17:04:24', 'apotheker', 'apotje', 'apotje', 'apotje@apo.nl', 2147483647),
+(24, 'ver', '$2y$10$roNgVdx0awt2fG2G7S3zue7525ZuC1jJeyMLGPV/5d79hmpQ0SVHm', '2019-10-17 16:14:40', 'verzekering', 'ver', 'ver', 'ver', 213),
+(25, 'arts', '$2y$10$AeomCLLhEa9KI0glFAIVYOPVDML8NlJoMcVi0drNpOWn/uHJHmN.i', '2019-10-17 16:16:05', 'artsen', 'arts', 'arts', 'arts', 675);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -189,7 +192,7 @@ ALTER TABLE `recepten`
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

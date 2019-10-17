@@ -106,7 +106,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
         </div>
 
 </body>
-<link rel="stylesheet" href="css/darkmode.css">
 <script src="darkmode.js"></script>
+<link rel="stylesheet" href="css/darkmode.css">
+
 
 </html>
