@@ -151,7 +151,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
     </div>
 </body>
-<link rel="stylesheet" href="css/darkmode.css">
+
 <script src="darkmode.js"></script>
 
 </html>

@@ -105,39 +105,39 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                 </table>
 
                 <?php
-                    $query = $db->prepare("SELECT * FROM patient WHERE id = " . $_GET['id']);
+                $query = $db->prepare("SELECT * FROM patient WHERE id = " . $_GET['id']);
 
-                    $query->execute();
-                    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($result as &$data) { ?>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Pas op!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Weet u zeker dat u de patiënt <?php echo $data['naam']; ?> wilt verwijderen?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
-                                <form method="post" action="removepatient.php">
-                                    <button type="submit" name="id" value="<?php echo $_GET["id"] ?>" class="btn btn-danger">Patiënt verwijderen</button>
-                                </form>
+                $query->execute();
+                $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($result as &$data) { ?>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Pas op!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Weet u zeker dat u de patiënt <?php echo $data['naam']; ?> wilt verwijderen?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
+                                    <form method="post" action="removepatient.php">
+                                        <button type="submit" name="id" value="<?php echo $_GET["id"] ?>" class="btn btn-danger">Patiënt verwijderen</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                </td>
-                </tr>
+                    </td>
+                    </tr>
 
-                </tbody>
-                </table>
-                <table>
+                    </tbody>
+                    </table>
+                    <table>
 
 
                         <a href="patient-gegevens-wijzigen.php?id=<?php echo $data['id'];
@@ -145,7 +145,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                         <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">
                             Patiënt verwijderen
                         </button>
-                </table>
+                    </table>
             </div>
         </div>
     </div>
