@@ -25,23 +25,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($new_password_err) && empty($confirm_password_err)){
         $id = $_SESSION["id"];
 
+        $param_username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
+        $param_naam = trim(filter_input(INPUT_POST, 'naam', FILTER_SANITIZE_STRING));
+        $param_adres = trim(filter_input(INPUT_POST, 'adres', FILTER_SANITIZE_STRING));
+        $param_email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING));
+        $param_telefoonnummer = filter_input(INPUT_POST, 'telefoonnummer', FILTER_VALIDATE_INT);
+        $param_id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+
         // Prepare an update statement
-        $sql = "UPDATE users SET username = :username, naam = :naam, adres = :adres, email = :email, telefoonnummer= :telefoonnummer WHERE id = 21";
+        $sql = "UPDATE users SET username = :username, naam = :naam, adres = :adres, email = :email, telefoonnummer= :telefoonnummer WHERE id = :id";
 
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
-            $stmt->bindParam(":naam", $param_naam, PDO::PARAM_INT);
-            $stmt->bindParam(":adres", $param_naam, PDO::PARAM_INT);
-            $stmt->bindParam(":email", $param_naam, PDO::PARAM_INT);
-            $stmt->bindParam(":telefoonnummer", $param_naam, PDO::PARAM_INT);
-        
+            $stmt->bindParam(":username", $param_username);
+            $stmt->bindParam(":naam", $param_naam);
+            $stmt->bindParam(":adres", $param_adres);
+            $stmt->bindParam(":email", $param_email);
+            $stmt->bindParam(":telefoonnummer", $param_telefoonnummer);
+            $stmt->bindParam(":id", $param_id);
 
             // Set parameters
             $id = $_SESSION["id"];
 
             // Attempt to execute the prepared statement
             if($stmt->execute()){
+                if ($stmt->rowCount() != 0) {
+                    $_SESSION['naam'] = $param_naam;
+                    $_SESSION['username'] = $param_username;
+                    $_SESSION['adres'] = $param_adres;
+                    $_SESSION['email'] = $param_email;
+                    $_SESSION['telefoonnummer'] = $param_telefoonnummer;
+                }
                 // Password updated successfully. Destroy the session, and redirect to login page
 
                 header("location: mijngegevens.php");
@@ -76,7 +90,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 
 <body id="home">
-
 <div class="jumbotron text-center">
     <h1>Welkom, <?php echo htmlspecialchars($_SESSION["naam"]); ?>!</h1>
     <h1>Health One</h1>
@@ -85,7 +98,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="container">
     <h2>Mijn gegevens</h2>
     <p>Hier kunt u uw gegevens wijzigen en inzien.</p>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form action="" method="post">
+        <input type="text" hidden name="id" value="<?= $_SESSION['id'] ?>" hidden>
         <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
             <label>Gebruikersnaam:</label>
             <input type="username" name="username" class="form-control" value="<?php echo htmlspecialchars($_SESSION["username"]); ?>">
@@ -117,7 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <span class="help-block"><?php echo $confirm_password_err; ?></span>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-success" disabled value="Opslaan">
+            <input type="submit" class="btn btn-success" value="Opslaan">
         </div>
     </form>
 </div>
