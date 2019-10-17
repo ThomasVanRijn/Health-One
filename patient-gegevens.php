@@ -1,7 +1,7 @@
 <?php
 // Initialize the session
 session_start();
- 
+
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["functie"] !== "Arts") {
     header("location: login.php");
@@ -68,7 +68,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
             <div class="col">
                 <hr>
                 <table class="table">
-                <thead class="thead-dark" style="background-color: green;">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Medicijn</th>
                             <th>herhaal</th>
@@ -95,10 +95,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
                 </table>
             </div>
         </div>
-        <a href="recept-uitschrijven.php?id=<?php echo $data["id"]; ?>">
-            <button class="btn btn-success darkmode-ignore">Recept uitschrijven</button>
-        </a>
-    </div>
+        <a href=" recept-uitschrijven.php?id=<?php echo $data["id"]; ?>">
+                        <button class="btn btn-success darkmode-ignore">Recept uitschrijven</button>
+                        </a>
+            </div>
 
 </body>
 <link rel="stylesheet" href="css/darkmode.css">

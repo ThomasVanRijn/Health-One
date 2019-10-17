@@ -22,83 +22,88 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION
 </head>
 
 <body>
-<div class="jumbotron text-center">
-    <h1>Health One</h1>
-    <p>Informatie patient</p>
+    <div class="jumbotron text-center">
+        <h1>Health One</h1>
+        <p>Informatie patient</p>
 
-    <div class="container">
-        <div class="progress">
-            <div class="darkmode-ignore progress-bar progress-bar-striped progress-bar-animated bg-success"
-                 style="width:66%"></div>
+        <div class="container">
+            <div class="progress">
+                <div class="darkmode-ignore progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:66%"></div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-4">
-            <?php
-            $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
-            $query = $db->prepare("SELECT * FROM patient WHERE id = " . $_GET['id']);
-
-            $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($result as &$data) {
-                echo "<img src='img/avatar.png'>";
-            }
-            ?>
-        </div>
-        <div class="col-8">
-            <table class="table">
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
                 <?php
-                try {
-                    echo "<tr>" . "<td>" . "Naam:" . "</td>" . "<td>" . $data['naam'] . "</td>" . "</tr>";
-                    echo "<tr>" . "<td>" . "Leeftijd:" . "</td>" . "<td>" . $data['leeftijd'] . "</td>" . "</tr>";
-                    echo "<tr>" . "<td>" . "Adres:" . "</td>" . "<td>" . $data['adres'] . "</td>" . "</tr>";
-                    echo "<tr>" . "<td>" . "Email:" . "</td>" . "<td>" . $data['email'] . "</td>" . "</tr>";
-                    echo "<tr>" . "<td>" . "Telefoonnummer:" . "</td>" . "<td>" . $data['telefoonnummer'] . "</td>" . "</tr>";
+                $db = new PDO("mysql:host=localhost;dbname=HealthOne", "root", "");
+                $query = $db->prepare("SELECT * FROM patient WHERE id = " . $_GET['id']);
 
-                } catch (PDOException $e) {
-                    die("Error!: " . $e->getMessage());
+                $query->execute();
+                $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($result as &$data) {
+                    echo "<img src='img/avatar.png'>";
                 }
                 ?>
+            </div>
+            <div class="col-8">
+                <table class="table">
+                    <?php
+                    try {
+                        echo "<tr>" . "<td>" . "Naam:" . "</td>" . "<td>" . $data['naam'] . "</td>" . "</tr>";
+                        echo "<tr>" . "<td>" . "Leeftijd:" . "</td>" . "<td>" . $data['leeftijd'] . "</td>" . "</tr>";
+                        echo "<tr>" . "<td>" . "Adres:" . "</td>" . "<td>" . $data['adres'] . "</td>" . "</tr>";
+                        echo "<tr>" . "<td>" . "Email:" . "</td>" . "<td>" . $data['email'] . "</td>" . "</tr>";
+                        echo "<tr>" . "<td>" . "Telefoonnummer:" . "</td>" . "<td>" . $data['telefoonnummer'] . "</td>" . "</tr>";
+                    } catch (PDOException $e) {
+                        die("Error!: " . $e->getMessage());
+                    }
+                    ?>
 
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                <thead class="thead-dark">
+                        <tr>
+                            <th>Medicijn</th>
+                            <th>herhaal</th>
+                            <th>dosering</th>
+                            <th>omschrijving</th>
+                            <th>Afgehaald</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $query = $db->prepare("SELECT * FROM recepten WHERE patient_id = " . $_GET['id']);
 
-                <div class="row">
-                    <div class="col">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Medicijn</th>
-                                <th>herhaal</th>
-                                <th>dosering</th>
-                                <th>omschrijving</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            $query = $db->prepare("SELECT * FROM recepten WHERE patient_id = " . $_GET['id']);
-
-                            $query->execute();
-                            $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                            foreach ($result as &$data) {
-                                echo "<tr>";
-                                echo "<td>" . $data['id'] . "</td>";
-                                echo "<td>" . $data['medicijn_id'] . "</td>";
-                                echo "<td>" . $data['herhaal'] . "</td>";
-                                echo "<td>" . $data['dosering'] . "</td>";
-                                echo "<td>" . $data['omschrijving'] . "</td>";
-                                echo "   <td>";
-                                echo "<form method='post' action='vergoed.php?id=" . $data['id'] . "'>";
-                                echo " <button type='submit' name='id' value='" . $_GET['id'] . "' >recept afgehaald?</button></form></td>";
-                                echo "</tr>";
+                        $query->execute();
+                        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($result as &$data) {
+                            echo "<tr>";
+                            echo "<td>" . $data['medicijn_id'] . "</td>";
+                            echo "<td>" . $data['herhaal'] . "</td>";
+                            echo "<td>" . $data['dosering'] . "</td>";
+                            echo "<td>" . $data['omschrijving'] . "</td>";
+                            echo "   <td>";
+                            if($data['afgehaald'] == 0){
+                            echo "<form method='post' action='vergoed.php?id=" . $data['id'] . "'>";
+                            echo " <button class='btn btn-success' type='submit' name='id' value='" . $_GET['id'] . "' >recept afgehaald?</button></form></td>";
                             }
-                            ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                            else{
+                                echo "Afgehaald" . "</td>";
+                            }
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
 </body>
 <link rel="stylesheet" href="css/darkmode.css">
