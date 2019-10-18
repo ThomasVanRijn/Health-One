@@ -65,11 +65,11 @@ try {
                         <td> <?= $recept->getNaam() ?></td>
                         <td> <?= $recept->getHoeveelheid() ?> </td>
                         <td> <?= $recept->getDatum()->format('d-m-Y') ?> </td>
-                        <?php if ($recept->getHerhaalrecept()) { ?>
+                        <?php if ($recept->getHerhaalrecept()) : ?>
                             <td><?= "ja" ?> </td>
-                        <?php } else { ?>
+                        <?php else : ?>
                             <td><?= "nee" ?> </td>
-                        <?php } ?>
+                        <?php endif; ?>
                         </tr>
                     <?php endforeach;
                 } else {
