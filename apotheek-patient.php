@@ -15,17 +15,14 @@
     <h1>Health One</h1>
     <p>Zoek patient</p>
 
-    <div class="container">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:33%"></div>
-        </div>
-    </div>
+
 </div>
 
 <?php
 try {
     include("classes/recept.php");
-    $db = new PDO("mysql:host=localhost;dbname=healthone", "root", "");
+    include("classes/patient.php");
+    include("classes/databaseconection.php");
     $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
     $queryRecept = $db->prepare("SELECT naam, medicijnID, hoeveelheid, datum, herhaalrecept FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where kaartnummer = :id AND afgehandeld = FALSE  ORDER BY datum DESC");
     $queryRecept->bindParam("id", $id);
@@ -33,10 +30,11 @@ try {
     $recepten = $queryRecept->fetchAll(PDO::FETCH_CLASS, "recept");
 
 
-    $queryName = $db->prepare("SELECT naam, id FROM patient where id = :id ");
-    $queryName->bindParam("id", $id);
-    $queryName->execute();
-    $resultName = $queryName->fetchAll(PDO::FETCH_ASSOC);
+    $queryPatient = $db->prepare("SELECT * FROM patient where id = :id ");
+    $queryPatient->bindParam("id", $id);
+    $queryPatient->execute();
+    $patienten = $queryPatient->fetchAll(PDO::FETCH_CLASS, 'patient');
+    $patient = $patienten[0];
 } catch (PDOException $e) {
     echo "Database not connected";
 }
@@ -47,8 +45,26 @@ try {
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th colspan="4"><?php echo $resultName[0]['naam']; ?></th>
+                    <th>naam</th>
+                    <th>geboortedatum</th>
+                    <th>verzekeringsnummer</th>
+                    <th>email</th>
+                    <th>telefoonnummer</th>
                 </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><?php echo $patient->getNaam(); ?></td>
+                    <td><?php echo $patient->getGeboortedatum()->format('d-m-Y'); ?></td>
+                    <td><?php echo $patient->getVerzekeringsnummer(); ?></td>
+                    <td><?php echo $patient->getEmail(); ?></td>
+                    <td><?php echo $patient->getTelefoonnummer(); ?></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <table class="table table-hover">
+                <thead>
                 <tr>
                     <th>medicijn</th>
                     <th>hoeveelheid</th>
@@ -61,15 +77,15 @@ try {
                 if ($recepten) {
                     foreach ($recepten as $recept) : ?>
                         <tr class="clickable"
-                            onclick="window.location='apotheek-recept.php?id=<?= $resultName[0]['id'] . "&mcid=" . $recept->getMedicijnID() . "&datum=" . $recept->getDatum()->format('Y-m-d') ?>'">
-                        <td> <?= $recept->getNaam() ?></td>
-                        <td> <?= $recept->getHoeveelheid() ?> </td>
-                        <td> <?= $recept->getDatum()->format('d-m-Y') ?> </td>
-                        <?php if ($recept->getHerhaalrecept()) : ?>
-                            <td><?= "ja" ?> </td>
-                        <?php else : ?>
-                            <td><?= "nee" ?> </td>
-                        <?php endif; ?>
+                            onclick="window.location='apotheek-recept.php?id=<?= $patient->getID() . "&mcid=" . $recept->getMedicijnID() . "&datum=" . $recept->getDatum()->format('Y-m-d') ?>'">
+                            <td> <?= $recept->getNaam() ?></td>
+                            <td> <?= $recept->getHoeveelheid() ?> </td>
+                            <td> <?= $recept->getDatum()->format('d-m-Y') ?> </td>
+                            <?php if ($recept->getHerhaalrecept()) : ?>
+                                <td><?= "ja" ?> </td>
+                            <?php else : ?>
+                                <td><?= "nee" ?> </td>
+                            <?php endif; ?>
                         </tr>
                     <?php endforeach;
                 } else {

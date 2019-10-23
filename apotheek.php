@@ -15,17 +15,12 @@
     <h1>Health One</h1>
     <p>Zoek patient</p>
 
-    <div class="container">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:33%"></div>
-        </div>
-    </div>
 </div>
 
 <?php
 include("classes/patient.php");
-$db = new PDO("mysql:host=localhost;dbname=healthone", "root", "");
-$query = $db->prepare("SELECT id, naam, verzekeringsnummer FROM patient");
+include("classes/databaseconection.php");
+$query = $db->prepare("SELECT * FROM patient");
 $query->execute();
 $patienten = $query->fetchAll(PDO::FETCH_CLASS, "patient");
 
@@ -45,6 +40,7 @@ $patienten = $query->fetchAll(PDO::FETCH_CLASS, "patient");
                 <thead>
                 <tr>
                     <th>Naam</th>
+                    <th>geboortedatum</th>
                     <th>verzekeringsnummer</th>
                 </tr>
                 </thead>
@@ -55,6 +51,7 @@ $patienten = $query->fetchAll(PDO::FETCH_CLASS, "patient");
                         <tr class="clickable"
                             onclick="window.location='apotheek-patient.php?id=<?= $patient->getId() ?>'">
                             <td><?= $patient->getNaam() ?></td>
+                            <td><?= $patient->getGeboortedatum()->format('d-m-Y'); ?></td>
                             <td><?= $patient->getVerzekeringsnummer() ?> </td>
                         </tr>
                     <?php endforeach;

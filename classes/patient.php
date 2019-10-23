@@ -5,13 +5,83 @@ class patient
 {
     private $naam;
     private $id;
-    private $verzekeringsnummer;
+    private $geboortedatum;
+    private $adres;
+    private $email;
+    private $telefoonnummer;
+
 
 
     function __construct()
     {
         $this->id = filter_var($this->id, FILTER_SANITIZE_NUMBER_INT);
+        $this->geboortedatum = new DateTime($this->geboortedatum, new DateTimeZone('Europe/Amsterdam'));
     }
+
+    /**
+     * @return mixed
+     */
+    public function getGeboortedatum()
+    {
+        return $this->geboortedatum;
+    }
+
+    /**
+     * @param mixed $geboortedatum
+     */
+    public function setGeboortedatum($geboortedatum)
+    {
+        $this->geboortedatum = $geboortedatum;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdres()
+    {
+        return $this->adres;
+    }
+
+    /**
+     * @param mixed $adres
+     */
+    public function setAdres($adres)
+    {
+        $this->adres = $adres;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTelefoonnummer()
+    {
+        return $this->telefoonnummer;
+    }
+
+    /**
+     * @param mixed $telefoonnummer
+     */
+    public function setTelefoonnummer($telefoonnummer)
+    {
+        $this->telefoonnummer = $telefoonnummer;
+    }
+    private $verzekeringsnummer;
 
     /**
      * @return mixed
