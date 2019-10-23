@@ -9,6 +9,12 @@ class medicijn
     private $bijwerking;
     private $verzekerd;
 
+    function __construct()
+    {
+        $this->id = filter_var($this->id, FILTER_SANITIZE_NUMBER_INT);
+        $this->verzekerd = filter_var($this->verzekerd, FILTER_VALIDATE_BOOLEAN);
+    }
+
     /**
      * @return mixed
      */

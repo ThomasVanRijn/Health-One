@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 14 okt 2019 om 09:28
+-- Gegenereerd op: 23 okt 2019 om 15:33
 -- Serverversie: 10.4.6-MariaDB
 -- PHP-versie: 7.3.9
 
@@ -58,17 +58,18 @@ INSERT INTO `artsen` (`id`, `naam`, `adres`, `email`, `telefoonnummer`) VALUES
 CREATE TABLE `medicijnen` (
   `id` int(255) NOT NULL,
   `naam` varchar(255) NOT NULL,
-  `herhaal` tinyint(1) NOT NULL,
-  `vergoed` tinyint(1) NOT NULL
+  `werking` text NOT NULL,
+  `bijwerking` text DEFAULT NULL,
+  `verzekerd` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `medicijnen`
 --
 
-INSERT INTO `medicijnen` (`id`, `naam`, `herhaal`, `vergoed`) VALUES
-(2, 'aids pil', 1, 0),
-(3, 'naampje', 0, 1);
+INSERT INTO `medicijnen` (`id`, `naam`, `werking`, `bijwerking`, `verzekerd`) VALUES
+(2, 'aids pil', 'tegen aids', NULL, 1),
+(3, 'naampje', 'werking', 'bijwerking', 0);
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,7 @@ INSERT INTO `medicijnen` (`id`, `naam`, `herhaal`, `vergoed`) VALUES
 CREATE TABLE `patient` (
   `id` int(255) NOT NULL,
   `naam` varchar(255) NOT NULL,
-  `leeftijd` int(255) NOT NULL,
+  `geboortedatum` date NOT NULL,
   `adres` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `telefoonnummer` int(255) NOT NULL,
@@ -91,12 +92,12 @@ CREATE TABLE `patient` (
 -- Gegevens worden geëxporteerd voor tabel `patient`
 --
 
-INSERT INTO `patient` (`id`, `naam`, `leeftijd`, `adres`, `email`, `telefoonnummer`, `verzekeringsnummer`, `aandoeningen`) VALUES
-(1, 'Dinna de Waard', 17, 'Vogelkersstraat 3', 'daandata1@gmail.com', 64868148, 12985, 'Cholera'),
-(3, 'Dylanus van der Hout', 17, 'Boomaweg 6a', 'Dylanvanderhout@gmail.com', 657119062, 132434344, ''),
-(4, 'Collin van de Laar', 17, 'heulstraat 3', 'collinvandelaar@gmail.com', 657119061, 856, 'Geen'),
-(347, 'tom', 54, 'hoistraat', 'asd@asd.com', 635620159, 654852, 'aids'),
-(348, 'Marcel de Jong', 23, 'Lange Straat 11', 'marceldejong@gmail.com', 612895520, 1192, 'Stress');
+INSERT INTO `patient` (`id`, `naam`, `geboortedatum`, `adres`, `email`, `telefoonnummer`, `verzekeringsnummer`, `aandoeningen`) VALUES
+(1, 'Dinna de Waard', '1963-05-24', 'Vogelkersstraat 3', 'daandata1@gmail.com', 64868148, 12985, 'Cholera'),
+(3, 'Dylanus van der Hout', '1996-07-16', 'Boomaweg 6a', 'Dylanvanderhout@gmail.com', 657119062, 132434344, ''),
+(4, 'Collin van de Laar', '1949-07-17', 'heulstraat 3', 'collinvandelaar@gmail.com', 657119061, 856, 'Geen'),
+(347, 'tom', '1998-12-15', 'hoistraat', 'asd@asd.com', 635620159, 654852, 'aids'),
+(348, 'Marcel de Jong', '1956-01-05', 'Lange Straat 11', 'marceldejong@gmail.com', 612895520, 1192, 'Stress');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,7 @@ INSERT INTO `patient` (`id`, `naam`, `leeftijd`, `adres`, `email`, `telefoonnumm
 --
 
 CREATE TABLE `recept` (
-  `kaartnummer` int(5) NOT NULL,
+  `patientID` int(5) NOT NULL,
   `medicijnID` int(5) NOT NULL,
   `hoeveelheid` varchar(10) NOT NULL,
   `datum` date NOT NULL DEFAULT current_timestamp(),
@@ -117,8 +118,8 @@ CREATE TABLE `recept` (
 -- Gegevens worden geëxporteerd voor tabel `recept`
 --
 
-INSERT INTO `recept` (`kaartnummer`, `medicijnID`, `hoeveelheid`, `datum`, `herhaalrecept`, `afgehandeld`) VALUES
-(347, 3, '15cc', '2019-10-06', 1, 0);
+INSERT INTO `recept` (`patientID`, `medicijnID`, `hoeveelheid`, `datum`, `herhaalrecept`, `afgehandeld`) VALUES
+(347, 3, '15cc     ', '2019-10-06', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -170,7 +171,7 @@ ALTER TABLE `patient`
 -- Indexen voor tabel `recept`
 --
 ALTER TABLE `recept`
-  ADD PRIMARY KEY (`kaartnummer`,`medicijnID`,`datum`) USING BTREE,
+  ADD PRIMARY KEY (`patientID`,`medicijnID`,`datum`) USING BTREE,
   ADD KEY `have` (`medicijnID`);
 
 --
@@ -217,7 +218,7 @@ ALTER TABLE `users`
 -- Beperkingen voor tabel `recept`
 --
 ALTER TABLE `recept`
-  ADD CONSTRAINT `for` FOREIGN KEY (`kaartnummer`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `for` FOREIGN KEY (`patientID`) REFERENCES `patient` (`id`),
   ADD CONSTRAINT `have` FOREIGN KEY (`medicijnID`) REFERENCES `medicijnen` (`id`);
 COMMIT;
 

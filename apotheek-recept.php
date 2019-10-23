@@ -27,7 +27,7 @@ try {
     $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
     $mcid = filter_input(INPUT_GET, 'mcid', FILTER_SANITIZE_NUMBER_INT);
     $datum = filter_input(INPUT_GET, 'datum', FILTER_SANITIZE_STRING);
-    $queryRecept = $db->prepare("SELECT naam, medicijnID, hoeveelheid, datum, herhaalrecept FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where kaartnummer = :id AND medicijnID = :mcid AND datum = :datum");
+    $queryRecept = $db->prepare("SELECT naam, medicijnID, hoeveelheid, datum, herhaalrecept FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where patientID = :id AND medicijnID = :mcid AND datum = :datum");
     $queryRecept->bindParam("id", $id);
     $queryRecept->bindParam("mcid", $mcid);
     $queryRecept->bindParam("datum", $datum);
@@ -119,7 +119,7 @@ try {
                 if (isset($_POST['aangepast'])) {
                     $newMCID = filter_input(INPUT_POST, "medicijn", FILTER_SANITIZE_NUMBER_INT);
                     $hoeveelheid = filter_input(INPUT_POST, "hoeveelheid", FILTER_SANITIZE_STRING);
-                    $queryAanpassen = $db->prepare("UPDATE recept SET medicijnID = :medicijn, hoeveelheid = :hoeveelheid WHERE kaartnummer = :id AND medicijnID = :mcid AND datum = :datum");
+                    $queryAanpassen = $db->prepare("UPDATE recept SET medicijnID = :medicijn, hoeveelheid = :hoeveelheid WHERE patientID = :id AND medicijnID = :mcid AND datum = :datum");
                     $queryAanpassen->bindParam('id', $id);
                     $queryAanpassen->bindParam('mcid', $mcid);
                     $queryAanpassen->bindParam('datum', $datum);
@@ -143,7 +143,7 @@ try {
             <?php endif;
             if (isset($_POST['verstuur'])) {
                 if ($_POST['keuze'] == "yes") {
-                    $queryAfhandelen = $db->prepare("UPDATE recept SET afgehandeld = TRUE WHERE kaartnummer = :id AND medicijnID = :mcid AND datum = :datum");
+                    $queryAfhandelen = $db->prepare("UPDATE recept SET afgehandeld = TRUE WHERE patientID = :id AND medicijnID = :mcid AND datum = :datum");
                     $queryAfhandelen->bindParam('id', $id);
                     $queryAfhandelen->bindParam('mcid', $mcid);
                     $queryAfhandelen->bindParam('datum', $datum);

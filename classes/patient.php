@@ -16,6 +16,7 @@ class patient
     {
         $this->id = filter_var($this->id, FILTER_SANITIZE_NUMBER_INT);
         $this->geboortedatum = new DateTime($this->geboortedatum, new DateTimeZone('Europe/Amsterdam'));
+        $this->telefoonnummer = filter_var($this->telefoonnummer, FILTER_SANITIZE_NUMBER_INT);
     }
 
     /**

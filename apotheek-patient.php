@@ -24,7 +24,7 @@ try {
     include("classes/patient.php");
     include("classes/databaseconection.php");
     $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-    $queryRecept = $db->prepare("SELECT naam, medicijnID, hoeveelheid, datum, herhaalrecept FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where kaartnummer = :id AND afgehandeld = FALSE  ORDER BY datum DESC");
+    $queryRecept = $db->prepare("SELECT naam, medicijnID, hoeveelheid, datum, herhaalrecept FROM recept LEFT JOIN medicijnen ON recept.medicijnID = medicijnen.id where patientID = :id AND afgehandeld = FALSE  ORDER BY datum DESC");
     $queryRecept->bindParam("id", $id);
     $queryRecept->execute();
     $recepten = $queryRecept->fetchAll(PDO::FETCH_CLASS, "recept");
@@ -77,7 +77,7 @@ try {
                 if ($recepten) {
                     foreach ($recepten as $recept) : ?>
                         <tr class="clickable"
-                            onclick="window.location='apotheek-recept.php?id=<?= $patient->getID() . "&mcid=" . $recept->getMedicijnID() . "&datum=" . $recept->getDatum()->format('Y-m-d') ?>'">
+                            onclick="window.location='apotheek-recept.php?id=<?= $patient->getId() . "&mcid=" . $recept->getMedicijnID() . "&datum=" . $recept->getDatum()->format('Y-m-d') ?>'">
                             <td> <?= $recept->getNaam() ?></td>
                             <td> <?= $recept->getHoeveelheid() ?> </td>
                             <td> <?= $recept->getDatum()->format('d-m-Y') ?> </td>

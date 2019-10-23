@@ -8,12 +8,30 @@ class recept
     private $hoeveelheid;
     private $datum;
     private $herhaalrecept;
+    private $afgehandeld;
 
     function __construct()
     {
         $this->medicijnID = filter_var($this->medicijnID, FILTER_SANITIZE_NUMBER_INT);
         $this->datum = new DateTime($this->datum, new DateTimeZone('Europe/Amsterdam'));
         $this->herhaalrecept = filter_var($this->herhaalrecept, FILTER_VALIDATE_BOOLEAN);
+        $this->afgehandeld = filter_var($this->afgehandeld, FILTER_VALIDATE_BOOLEAN);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAfgehandeld()
+    {
+        return $this->afgehandeld;
+    }
+
+    /**
+     * @param mixed $afgehandeld
+     */
+    public function setAfgehandeld($afgehandeld)
+    {
+        $this->afgehandeld = $afgehandeld;
     }
 
     /**
