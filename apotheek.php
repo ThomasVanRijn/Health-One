@@ -36,7 +36,7 @@ $patienten = $query->fetchAll(PDO::FETCH_CLASS, "patient");
     </div>
     <div class="row">
         <div class="col">
-            <table class="table table-hover">
+            <table class="table table-hover table-responsive-lg">
                 <thead>
                 <tr>
                     <th>Naam</th>

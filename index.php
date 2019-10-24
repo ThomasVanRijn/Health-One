@@ -32,7 +32,7 @@
                 <a style="text-decoration: none" href="verzekering.php"><button class="btn btn-block">VERZEKERING</button></a>
             </div>
             <div class="col-lg-4">
-                <a href="verzekering-gijs.php"><button class="btn btn-block">VERZEKERING -gijs</button></a>
+                <a href="verzekeraar-receptenlijst-gijs.php"><button class="btn btn-block">VERZEKERING -gijs</button></a>
             </div>
         </div>
     </div>

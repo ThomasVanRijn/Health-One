@@ -42,7 +42,7 @@ try {
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table table-hover">
+            <table class="table table-responsive-lg">
                 <thead>
                 <tr>
                     <th>naam</th>
@@ -63,7 +63,7 @@ try {
                 </tbody>
             </table>
             <br>
-            <table class="table table-hover">
+            <table class="table table-hover table-responsive-lg">
                 <thead>
                 <tr>
                     <th>medicijn</th>
