@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 23 okt 2019 om 15:33
+-- Gegenereerd op: 26 okt 2019 om 22:08
 -- Serverversie: 10.4.6-MariaDB
 -- PHP-versie: 7.3.9
 
@@ -68,8 +68,10 @@ CREATE TABLE `medicijnen` (
 --
 
 INSERT INTO `medicijnen` (`id`, `naam`, `werking`, `bijwerking`, `verzekerd`) VALUES
-(2, 'aids pil', 'tegen aids', NULL, 1),
-(3, 'naampje', 'werking', 'bijwerking', 0);
+(2, 'levocetirizine', 'anti-histamine', 'vermoeidheid', 1),
+(3, 'pantaprozol', 'werking', 'bijwerking', 0),
+(12, 'Vitamine D', 'energie', NULL, 0),
+(13, 'ibruprufen', 'tegen hoofdpijn', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -109,7 +111,7 @@ CREATE TABLE `recept` (
   `patientID` int(5) NOT NULL,
   `medicijnID` int(5) NOT NULL,
   `hoeveelheid` varchar(10) NOT NULL,
-  `datum` date NOT NULL DEFAULT current_timestamp(),
+  `datum` date NOT NULL,
   `herhaalrecept` tinyint(1) NOT NULL DEFAULT 0,
   `afgehandeld` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -119,7 +121,15 @@ CREATE TABLE `recept` (
 --
 
 INSERT INTO `recept` (`patientID`, `medicijnID`, `hoeveelheid`, `datum`, `herhaalrecept`, `afgehandeld`) VALUES
-(347, 3, '15cc     ', '2019-10-06', 1, 0);
+(1, 2, '30 stuks', '2019-10-26', 1, 0),
+(1, 3, '30 stuks', '2019-10-26', 0, 0),
+(1, 13, '5 stuks', '2019-10-26', 0, 0),
+(3, 2, '30 stuks', '2019-10-26', 0, 0),
+(4, 12, '10 stuks', '2019-10-26', 1, 0),
+(347, 2, '15cc  ', '2019-10-06', 1, 0),
+(347, 13, '10 stuks', '2019-10-26', 0, 0),
+(348, 3, '30 stuks', '2019-10-26', 1, 0),
+(348, 13, '15 stuks', '2019-10-26', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -196,7 +206,7 @@ ALTER TABLE `artsen`
 -- AUTO_INCREMENT voor een tabel `medicijnen`
 --
 ALTER TABLE `medicijnen`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT voor een tabel `patient`

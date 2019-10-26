@@ -70,12 +70,12 @@
                 <tr class="clickable"
                 onclick="window.location='verzekeraar-klant-beheren-gijs.php'" >
                     <td>levocetirizine</td>
-                    <td>nee</td>
+                    <td>ja</td>
                     <td><form class="form-group"><input class="btn btn-success" type="submit" value="aanpassen" name="aanpassen"></form></td>
                 </tr>
                 <tr>
                     <td>pantaprozol</td>
-                    <td>ja</td>
+                    <td>nee</td>
                     <td><form class="form-group"><input class="btn btn-success" type="submit" value="aanpassen" name="aanpassen"></form></td>
                 </tr>
                 <tr>
@@ -85,7 +85,7 @@
                 </tr>
                 <tr>
                     <td>ibruprufen</td>
-                    <td>nee</td>
+                    <td>ja</td>
                     <td><form class="form-group"><input class="btn btn-success" type="submit" value="aanpassen" name="aanpassen"></form></td>
                 </tr>
                 </tbody>
